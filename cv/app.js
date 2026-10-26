@@ -556,8 +556,7 @@ function recolectarDatos() {
             email: val(b, '.r-email'),
             puesto: val(b, '.r-puesto'),
             empresa: val(b, '.r-empresa')
-        })).filter(r => r.nombre),
-        plantilla: "clasica"
+        })).filter(r => r.nombre)
     };
 }
 
