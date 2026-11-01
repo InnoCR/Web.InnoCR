@@ -1,31 +1,25 @@
 /* ============================================
-   1. VARIABLES Y PALETA DE COLORES (InnoCR)
+   InnoCR — styles.css (GLOBAL)
+   Compartido por: landing, curriculum, recomendación
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES Y PALETA DE COLORES
    ============================================ */
 :root {
-    /* Colores principales */
     --primario: #0F172A;
-    /* Azul Marino oscuro */
     --secundario: #1E3A8A;
-    /* Azul fuerte (botones) */
     --secundario-hover: #172554;
     --acento: #F97316;
-    /* Naranja (Logo y detalles) */
     --acento-hover: #EA580C;
-
-    /* Fondos y textos */
     --fondo: #FFFFFF;
     --fondo-suave: #F8FAFC;
-    /* Gris muy sutil */
     --texto: #334155;
     --texto-suave: #64748B;
     --borde: #CBD5E1;
-
-    /* Estados */
     --exito: #10B981;
     --error: #EF4444;
     --whatsapp: #25D366;
-
-    /* Medidas */
     --radio: 14px;
     --radio-sm: 10px;
     --sombra: 0 2px 8px rgba(15, 23, 42, 0.06);
@@ -125,7 +119,29 @@ body {
     margin-top: 12px;
 }
 
-/* Progreso (Para el formulario del CV) */
+/* Botón "← Volver" en cabecera de subpáginas */
+.cabecera-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--texto-suave);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.cabecera-volver:hover {
+    color: var(--secundario);
+}
+
+.cabecera-volver i {
+    font-size: 12px;
+}
+
+/* ============================================
+   4. BARRA DE PROGRESO
+   ============================================ */
 .progreso {
     margin-bottom: 8px;
 }
@@ -156,6 +172,9 @@ body {
     transition: width 0.4s ease;
 }
 
+/* ============================================
+   5. CONTENIDO Y SECCIONES
+   ============================================ */
 .contenido {
     flex: 1;
     padding: 24px;
@@ -197,7 +216,7 @@ body {
 }
 
 /* ============================================
-   4. FORMULARIOS E INPUTS
+   6. FORMULARIOS E INPUTS
    ============================================ */
 label {
     display: block;
@@ -259,7 +278,6 @@ textarea {
     min-height: 100px;
 }
 
-/* Grids para campos */
 .fila {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -303,7 +321,7 @@ textarea {
 }
 
 /* ============================================
-   5. BLOQUES DINÁMICOS (CV)
+   7. BLOQUES DINÁMICOS
    ============================================ */
 .bloque {
     background: var(--fondo-suave);
@@ -336,7 +354,6 @@ textarea {
     margin-top: 0;
 }
 
-/* Botones de acción (Mover / Eliminar) */
 .bloque-acciones {
     display: flex;
     justify-content: flex-end;
@@ -396,7 +413,7 @@ textarea {
 }
 
 /* ============================================
-   6. BOTONES PRINCIPALES Y BARRA INFERIOR
+   8. BOTONES PRINCIPALES Y BARRA INFERIOR
    ============================================ */
 .barra-inferior {
     display: flex;
@@ -510,7 +527,81 @@ textarea {
 }
 
 /* ============================================
-   7. PANTALLA DE INICIO (Bienvenida)
+   9. LANDING PAGE (tarjetas de servicio)
+   ============================================ */
+.hub-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.tarjeta-servicio {
+    background: var(--fondo);
+    border: 1.5px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 30px 24px;
+    text-decoration: none;
+    color: var(--texto);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.tarjeta-servicio:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-lg);
+    border-color: var(--secundario);
+}
+
+.tarjeta-servicio .icono-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(30, 58, 138, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.tarjeta-servicio .icono-wrapper i {
+    font-size: 28px;
+    color: var(--secundario);
+}
+
+.tarjeta-servicio h3 {
+    color: var(--primario);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.tarjeta-servicio p {
+    font-size: 14px;
+    color: var(--texto-suave);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.tarjeta-servicio .precio-tag {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primario);
+    margin-bottom: 20px;
+}
+
+.tarjeta-servicio .btn-primario {
+    width: 100%;
+    pointer-events: none;
+}
+
+/* ============================================
+   10. PANTALLA DE BIENVENIDA / PRECIO
    ============================================ */
 .pasos-info {
     list-style: none;
@@ -573,7 +664,7 @@ textarea {
 }
 
 /* ============================================
-   8. PANTALLAS DE ESTADO (ÉXITO / DUPLICADO)
+   11. PANTALLAS DE ESTADO (ÉXITO / DUPLICADO)
    ============================================ */
 .contenido-estado {
     flex: 1;
@@ -649,7 +740,7 @@ textarea {
 }
 
 /* ============================================
-   9. MODALES (Alertas, Espera, Privacidad)
+   12. MODALES
    ============================================ */
 .modal-overlay {
     position: fixed;
@@ -771,7 +862,6 @@ textarea {
     color: #fff;
 }
 
-/* Spinner de Carga */
 .spinner-grande {
     width: 48px;
     height: 48px;
@@ -809,7 +899,6 @@ textarea {
     font-weight: 600;
 }
 
-/* Estilos para el Modal de Alerta */
 #modal-alerta .modal-contenido {
     animation: pop 0.3s ease;
 }
@@ -819,7 +908,106 @@ textarea {
 }
 
 /* ============================================
-   10. MEDIA QUERIES (Móviles)
+   13. TOAST DE GUARDADO
+   ============================================ */
+.toast-guardado {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--primario);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 20px;
+    box-shadow: var(--sombra-lg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 500;
+    white-space: nowrap;
+}
+
+.toast-guardado.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   14. MODAL DE UPSELL (Carta de recomendación)
+   ============================================ */
+.modal-upsell .modal-contenido {
+    text-align: center;
+    max-width: 400px;
+}
+
+.modal-upsell .upsell-icono {
+    font-size: 42px;
+    color: var(--secundario);
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.modal-upsell .upsell-titulo {
+    color: var(--primario);
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.modal-upsell .upsell-texto {
+    font-size: 14px;
+    color: var(--texto-suave);
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.modal-upsell .upsell-precio {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primario);
+    margin: 8px 0 4px;
+}
+
+.modal-upsell .upsell-detalle {
+    font-size: 13px;
+    color: var(--texto-suave);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.modal-upsell .modal-botones {
+    flex-direction: column;
+}
+
+.modal-upsell .modal-botones button {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+}
+
+.modal-upsell .btn-upsell-si {
+    background: var(--secundario);
+    color: #fff;
+}
+
+.modal-upsell .btn-upsell-si:hover {
+    background: var(--secundario-hover);
+}
+
+.modal-upsell .btn-upsell-no {
+    background: var(--fondo);
+    color: var(--texto);
+    border: 1.5px solid var(--borde);
+}
+
+.modal-upsell .btn-upsell-no:hover {
+    background: var(--fondo-suave);
+}
+
+/* ============================================
+   15. MEDIA QUERIES (RESPONSIVE)
    ============================================ */
 @media (max-width: 640px) {
     #app {
@@ -853,5 +1041,10 @@ textarea {
     .fila-3 {
         grid-template-columns: 1fr;
         gap: 4px;
+    }
+
+    .toast-guardado {
+        bottom: 80px;
+        font-size: 12px;
     }
 }

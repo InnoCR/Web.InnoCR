@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV InnoCR - Te ayudamos a crear tu currículum</title>
+    <title>Crear mi Currículum | InnoCR</title>
 
-    <!-- Etiquetas Open Graph para WhatsApp (Imagen Grande) -->
+    <!-- Open Graph -->
     <meta property="og:title" content="CV InnoCR - Creamos tu currículum profesional">
     <meta property="og:description"
         content="Llena el formulario, coordinamos por WhatsApp y recibe tu CV en PDF listo para enviar a reclutadores.">
@@ -15,57 +15,26 @@
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
 
-    <!-- Font Awesome (Iconos) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Tu archivo de estilos CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- CSS global + CSS específico del CV -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.curriculum.css">
 </head>
 
 <body>
 
     <div id="app">
 
-        <!-- PANTALLA 0 — BIENVENIDA -->
-        <section id="pantalla-0" class="pantalla activa">
+        <!-- ========================================= -->
+        <!-- PANTALLA 1 — DATOS PERSONALES             -->
+        <!-- ========================================= -->
+        <section id="pantalla-1" class="pantalla activa">
             <header class="cabecera">
-                <h1 class="logo"><span>CV</span> Inno<span>CR</span></h1>
-                <p class="eslogan">Te ayudamos a crear tu currículum</p>
-            </header>
-
-            <div class="contenido"
-                style="display: flex; flex-direction: column; justify-content: center; padding-bottom: 40px;">
-                <h2 class="titulo-seccion">¿Cómo funciona?</h2>
-                <ol class="pasos-info">
-                    <li><span class="numero">1</span> Llena el formulario con tu información.</li>
-                    <li><span class="numero">2</span> Al finalizar nos contactamos por WhatsApp para coordinar el pago y
-                        la entrega de tu currículum.</li>
-                </ol>
-
-                <div class="caja-precio" style="margin-bottom: 24px;">
-                    <p class="precio-label">Precio</p>
-                    <p class="precio" id="precio-bienvenida">₡1,500</p>
-                    <p class="nota-precio">
-                        El pago se realiza <strong>después</strong> de completar el formulario,
-                        si estás interesado/a. <br><br>
-                        <!-- <i class="fa-solid fa-clock" style="color: var(--acento); margin-right: 4px;"></i> -->
-                        <!-- <strong>Tiempo estimado de entrega:</strong> 24 horas. -->
-                    </p>
-                </div>
-
-                <!-- Botones grandes debajo del precio -->
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <button class="btn-primario btn-grande" onclick="irAPantalla(1)">Comenzar</button>
-                    <button class="btn-outline btn-grande" onclick="abrirModalYaLLeno()">Ya llené mi formulario
-                        antes</button>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- PANTALLA 1 — DATOS PERSONALES -->
-        <section id="pantalla-1" class="pantalla">
-            <header class="cabecera">
+                <a href="../index.html" class="cabecera-volver">
+                    <i class="fa-solid fa-arrow-left"></i> Volver
+                </a>
                 <div class="progreso">
                     <span class="paso-texto">Paso 1 de 5</span>
                     <div class="barra-progreso">
@@ -82,7 +51,7 @@
                 <label for="nombre">Nombre completo <span class="obligatorio">*</span></label>
                 <input type="text" id="nombre" autocomplete="name">
 
-                <label for="fecha_nac">Fecha de nacimiento <span class="opcional">(opcional)</span></label>
+                <label for="fecha_nac_dia">Fecha de nacimiento <span class="opcional">(opcional)</span></label>
                 <div class="fila-3">
                     <select id="fecha_nac_dia">
                         <option value="">Día</option>
@@ -140,12 +109,14 @@
             </div>
 
             <footer class="barra-inferior">
-                <button class="btn-secundario" onclick="irAPantalla(0)">Atrás</button>
+                <button class="btn-secundario" onclick="irAPantalla(1);">Atrás</button>
                 <button class="btn-primario" onclick="validarYAvanzar(1)">Siguiente</button>
             </footer>
         </section>
 
-        <!-- PANTALLA 2 — PERFIL Y EXPERIENCIA -->
+        <!-- ========================================= -->
+        <!-- PANTALLA 2 — PERFIL Y EXPERIENCIA         -->
+        <!-- ========================================= -->
         <section id="pantalla-2" class="pantalla">
             <header class="cabecera">
                 <div class="progreso">
@@ -179,7 +150,9 @@
             </footer>
         </section>
 
-        <!-- PANTALLA 3 — FORMACIÓN -->
+        <!-- ========================================= -->
+        <!-- PANTALLA 3 — FORMACIÓN                    -->
+        <!-- ========================================= -->
         <section id="pantalla-3" class="pantalla">
             <header class="cabecera">
                 <div class="progreso">
@@ -213,7 +186,9 @@
             </footer>
         </section>
 
-        <!-- PANTALLA 4 — HABILIDADES Y MÁS -->
+        <!-- ========================================= -->
+        <!-- PANTALLA 4 — HABILIDADES Y MÁS            -->
+        <!-- ========================================= -->
         <section id="pantalla-4" class="pantalla">
             <header class="cabecera">
                 <div class="progreso">
@@ -258,7 +233,9 @@
             </footer>
         </section>
 
-        <!-- PANTALLA 5 — REFERENCIAS Y ENVÍO -->
+        <!-- ========================================= -->
+        <!-- PANTALLA 5 — REFERENCIAS Y ENVÍO          -->
+        <!-- ========================================= -->
         <section id="pantalla-5" class="pantalla">
             <header class="cabecera">
                 <div class="progreso">
@@ -299,7 +276,9 @@
             </footer>
         </section>
 
-        <!-- PANTALLA ÉXITO -->
+        <!-- ========================================= -->
+        <!-- PANTALLA ÉXITO                            -->
+        <!-- ========================================= -->
         <section id="pantalla-exito" class="pantalla">
             <div class="contenido-estado">
                 <div class="tarjeta-estado">
@@ -317,7 +296,9 @@
             </div>
         </section>
 
-        <!-- PANTALLA DUPLICADO -->
+        <!-- ========================================= -->
+        <!-- PANTALLA DUPLICADO                        -->
+        <!-- ========================================= -->
         <section id="pantalla-duplicado" class="pantalla">
             <div class="contenido-estado">
                 <div class="tarjeta-estado">
@@ -342,7 +323,7 @@
         <!-- MODALES                                    -->
         <!-- ========================================== -->
 
-        <!-- MODAL ESPERA -->
+        <!-- Modal de espera -->
         <div id="modal-espera" class="modal-overlay">
             <div class="modal-contenido espera">
                 <div class="spinner-grande"></div>
@@ -351,7 +332,7 @@
             </div>
         </div>
 
-        <!-- MODAL YA LLENÉ ANTES -->
+        <!-- Modal "Ya llené antes" -->
         <div id="modal-ya-lleno" class="modal-overlay">
             <div class="modal-contenido">
                 <h3>¿En qué te podemos ayudar?</h3>
@@ -380,7 +361,7 @@
             </div>
         </div>
 
-        <!-- MODAL POLÍTICA DE PRIVACIDAD -->
+        <!-- Modal Política de Privacidad -->
         <div id="modal-privacidad" class="modal-overlay">
             <div class="modal-contenido" style="max-width: 500px; text-align: left;">
                 <h3 style="text-align: center;">Política de Privacidad</h3>
@@ -393,7 +374,7 @@
             </div>
         </div>
 
-        <!-- MODAL ALERTA GENERAL (Reemplaza el alert() de JS) -->
+        <!-- Modal Alerta general -->
         <div id="modal-alerta" class="modal-overlay">
             <div class="modal-contenido" style="max-width: 340px; text-align: center;">
                 <div id="alerta-icono" style="font-size: 32px; color: var(--error); margin-bottom: 12px;">
@@ -406,13 +387,37 @@
             </div>
         </div>
 
+        <!-- Modal UPSELL (ofrecer carta de recomendación) -->
+        <div id="modal-upsell" class="modal-overlay modal-upsell">
+            <div class="modal-contenido">
+                <div class="upsell-icono"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h3 class="upsell-titulo">¡Tu CV está en camino!</h3>
+                <p class="upsell-texto">
+                    ¿Quieres complementarlo con <strong>cartas de recomendación</strong> de tus referencias?
+                </p>
+                <p class="upsell-precio" id="upsell-precio">₡1,000</p>
+                <p class="upsell-detalle">
+                    Te ayudamos a redactarlas con formato profesional, listas para acompañar tu CV.
+                </p>
+                <div class="modal-botones">
+                    <button class="btn-upsell-si" onclick="irACrearCartas()">
+                        <i class="fa-solid fa-file-signature"></i> Sí, crear cartas
+                    </button>
+                    <button class="btn-upsell-no" onclick="irAWhatsAppDesdeUpsell()">
+                        Ahora no, ir a WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- ========================================== -->
-    <!-- ENLACES A LOS SCRIPTS                      -->
+    <!-- SCRIPTS                                    -->
     <!-- ========================================== -->
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+    <script src="../data.js"></script>
+    <script src="../app.js"></script>
+    <script src="app.curriculum.js"></script>
 
 </body>
 

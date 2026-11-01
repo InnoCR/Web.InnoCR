@@ -1,3 +1,8 @@
+/* ============================================
+   InnoCR — data.js (GLOBAL)
+   Fuente de verdad para landing, curriculum y recomendación
+   ============================================ */
+
 const CONFIG = {
     // ==========================================
     // 1. CONFIGURACIÓN GENERAL DEL SITIO

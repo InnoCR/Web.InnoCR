@@ -1,0 +1,119 @@
+/* ============================================
+   InnoCR — styles.curriculum.css
+   Estilos ESPECÍFICOS del formulario de Currículum.
+   Todo lo global (botones, inputs, modales, bloques, etc.)
+   vive en ../styles.css
+   ============================================ */
+
+/* ============================================
+   1. AJUSTES ESPECÍFICOS DEL CV
+   ============================================ */
+
+/* El modal de upsell necesita que el precio se vea bien centrado
+   y que el botón "Sí" destaque. Ya está casi todo en styles.css,
+   pero aquí ajustamos un par de detalles del contexto CV. */
+#modal-upsell .upsell-precio {
+    color: var(--secundario);
+}
+
+/* En el CV, el bloque de referencias suele tener muchos campos.
+   Damos un poco de aire extra al textarea de descripción/logros. */
+#lista-trabajos .bloque textarea,
+#lista-proyectos .bloque textarea {
+    min-height: 80px;
+}
+
+/* El paso 4 tiene muchos bloques seguidos.
+   Separamos las secciones internas un poco más. */
+#pantalla-4 .seccion {
+    margin-bottom: 32px;
+}
+
+/* En pantallas pequeñas, los botones mover/eliminar de bloques
+   se ven un poco apretados. Ajustamos el gap. */
+@media (max-width: 640px) {
+    .bloque-acciones {
+        gap: 4px;
+    }
+
+    .bloque .fila {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* ============================================
+   2. ESTADO DE CARGA DEL BOTÓN ENVIAR
+   ============================================ */
+#btn-enviar.cargando {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+#btn-enviar.cargando::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: girar 0.8s linear infinite;
+}
+
+/* ============================================
+   3. BANNER DE "BORRADOR RESTAURADO"
+   ============================================ */
+.banner-borrador {
+    background: rgba(30, 58, 138, 0.08);
+    border: 1px solid rgba(30, 58, 138, 0.2);
+    color: var(--secundario);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: var(--radio-sm);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 0.3s ease;
+}
+
+.banner-borrador i {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.banner-borrador button {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    color: var(--secundario);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: inherit;
+    padding: 0;
+}
+
+.banner-borrador button:hover {
+    color: var(--primario);
+}
+
+/* ============================================
+   4. PANTALLA DE ÉXITO — VARIANTE CV
+   ============================================ */
+#pantalla-exito .tarjeta-estado .btn-whatsapp {
+    margin-top: 8px;
+}
+
+/* En la pantalla de duplicado, el botón "Volver al inicio"
+   debe quedar claramente secundario. */
+#pantalla-duplicado .btn-outline {
+    margin-top: 12px;
+}

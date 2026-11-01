@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Recomendación | InnoCR</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Carta de Recomendación - InnoCR">
+    <meta property="og:description"
+        content="Muy pronto podrás crear tus cartas de recomendación profesionales con InnoCR.">
+    <meta property="og:image" content="https://innocr.com/cv/anuncio.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS global compartido -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <style>
+        /* Estilos exclusivos de esta página "próximamente" */
+        .proximamente-contenido {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px 60px;
+            flex: 1;
+        }
+
+        .proximamente-icono {
+            font-size: 64px;
+            color: var(--secundario);
+            margin-bottom: 20px;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .proximamente-titulo {
+            color: var(--primario);
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .proximamente-subtitulo {
+            font-size: 16px;
+            color: var(--texto-suave);
+            line-height: 1.6;
+            max-width: 460px;
+            margin-bottom: 8px;
+        }
+
+        .proximamente-from-cv {
+            background: rgba(30, 58, 138, 0.08);
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            color: var(--secundario);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px 16px;
+            border-radius: var(--radio-sm);
+            margin: 16px 0;
+            max-width: 460px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .proximamente-from-cv i {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .proximamente-precio {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(15, 23, 42, 0.05));
+            border: 1.5px solid rgba(30, 58, 138, 0.2);
+            border-radius: var(--radio);
+            padding: 20px;
+            text-align: center;
+            margin: 24px 0;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .proximamente-precio .precio-label {
+            margin-bottom: 4px;
+        }
+
+        .proximamente-precio .precio {
+            font-size: 36px;
+            margin: 4px 0 4px;
+        }
+
+        .proximamente-precio .nota-precio {
+            font-size: 12px;
+        }
+
+        .proximamente-botones {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 320px;
+            margin-top: 8px;
+        }
+
+        .proximamente-nota-whatsapp {
+            font-size: 12px;
+            color: var(--texto-suave);
+            margin-top: 14px;
+            max-width: 320px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 640px) {
+            .proximamente-titulo {
+                font-size: 22px;
+            }
+
+            .proximamente-icono {
+                font-size: 52px;
+            }
+
+            .proximamente-contenido {
+                padding: 32px 20px 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <section class="pantalla activa">
+            <header class="cabecera">
+                <a href="../index.html" class="cabecera-volver">
+                    <i class="fa-solid fa-arrow-left"></i> Volver al inicio
+                </a>
+                <h1 class="logo"><span>CV</span> Inno<span>CR</span></h1>
+                <p class="eslogan">Tu próximo paso profesional empieza aquí</p>
+            </header>
+
+            <div class="proximamente-contenido">
+                <div class="proximamente-icono">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                </div>
+
+                <h2 class="proximamente-titulo">Muy pronto</h2>
+                <p class="proximamente-subtitulo">
+                    Estamos trabajando en el formulario para crear tus <strong>cartas de recomendación</strong> con
+                    formato profesional, listas para acompañar tu currículum.
+                </p>
+
+                <div id="banner-from-cv" class="proximamente-from-cv" style="display:none;">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>¡Vienes de crear tu currículum! Estamos afinando los últimos detalles para que puedas
+                        crear tus cartas aquí mismo.</span>
+                </div>
+
+                <div class="proximamente-precio">
+                    <p class="precio-label">Precio</p>
+                    <p class="precio" id="precio-carta">₡...</p>
+                    <p class="nota-precio">
+                        El pago se realiza <strong>después</strong> de completar el formulario.
+                    </p>
+                </div>
+
+                <div class="proximamente-botones">
+                    <button class="btn-primario btn-whatsapp" onclick="avisarPorWhatsApp()">
+                        <i class="fa-brands fa-whatsapp"></i> Avísame cuando esté lista
+                    </button>
+                    <a href="../index.html" class="btn-outline" style="text-decoration: none; text-align: center;">
+                        Volver al inicio
+                    </a>
+                </div>
+
+                <p class="proximamente-nota-whatsapp">
+                    Mientras tanto, puedes contactarnos por WhatsApp si necesitas una carta de recomendación urgente.
+                </p>
+            </div>
+
+            <footer
+                style="padding: 24px; text-align: center; border-top: 1px solid var(--borde); background: var(--fondo);">
+                <p style="font-size: 13px; color: var(--texto-suave); margin-bottom: 12px;">
+                    ¿Tienes dudas? Contáctanos
+                </p>
+                <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 16px;">
+                    <a href="https://wa.me/50670373820" target="_blank"
+                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--whatsapp); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);"
+                        title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.facebook.com/Innocr2018" target="_blank"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--secundario); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none;"
+                        title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/innocostarica" target="_blank"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--secundario); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none;"
+                        title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" onclick="abrirModalPrivacidad(); return false;"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--texto-suave); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none;"
+                        title="Política de Privacidad">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </a>
+                </div>
+                <p style="font-size: 12px; color: var(--texto-suave);">
+                    &copy; <span id="anio-actual"></span> InnoCR. Todos los derechos reservados.
+                </p>
+            </footer>
+        </section>
+
+        <!-- MODAL POLÍTICA DE PRIVACIDAD -->
+        <div id="modal-privacidad" class="modal-overlay">
+            <div class="modal-contenido" style="max-width: 500px; text-align: left;">
+                <h3 style="text-align: center;">Política de Privacidad</h3>
+                <p id="texto-privacidad"
+                    style="font-size: 13px; white-space: pre-wrap; max-height: 300px; overflow-y: auto; background: var(--fondo-suave); padding: 15px; border-radius: 8px; color: var(--texto-suave);">
+                </p>
+                <div class="modal-botones">
+                    <button class="btn-entendido" onclick="cerrarModalPrivacidad()">Entendido</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL ALERTA (por consistencia con app.js) -->
+        <div id="modal-alerta" class="modal-overlay">
+            <div class="modal-contenido" style="max-width: 340px; text-align: center;">
+                <div id="alerta-icono" style="font-size: 32px; color: var(--error); margin-bottom: 12px;">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <h3 id="alerta-titulo" style="margin-bottom: 8px;">Atención</h3>
+                <p id="alerta-mensaje"
+                    style="font-size: 14px; color: var(--texto-suave); line-height: 1.5; margin-bottom: 20px;"></p>
+                <button class="btn-primario" style="width: 100%;" onclick="cerrarModalAlerta()">Aceptar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../data.js"></script>
+    <script src="../app.js"></script>
+    <script>
+        /* ============================================
+           Lógica específica de "próximamente"
+           ============================================ */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Año dinámico del footer
+            const anioSpan = document.getElementById('anio-actual');
+            if (anioSpan) anioSpan.textContent = new Date().getFullYear();
+
+            // Precio dinámico desde CONFIG
+            if (typeof CONFIG !== 'undefined' && CONFIG.servicios && CONFIG.servicios.carta) {
+                const precioEl = document.getElementById('precio-carta');
+                if (precioEl) precioEl.textContent = CONFIG.servicios.carta.precio_texto;
+            }
+
+            // Detectar ?from=cv
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('from') === 'cv') {
+                const banner = document.getElementById('banner-from-cv');
+                if (banner) banner.style.display = 'flex';
+            }
+        });
+
+        /* Botón "Avísame cuando esté lista" */
+        function avisarPorWhatsApp() {
+            const desdeCV = new URLSearchParams(window.location.search).get('from') === 'cv';
+            const base = desdeCV
+                ? 'Hola, acabo de crear mi currículum y quiero que me avisen cuando esté disponible el formulario de cartas de recomendación.'
+                : 'Hola, quiero que me avisen cuando esté disponible el formulario de cartas de recomendación.';
+            abrirWhatsApp(base);
+        }
+    </script>
+
+</body>
+
+</html>
