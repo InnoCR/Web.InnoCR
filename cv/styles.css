@@ -1,25 +1,31 @@
 /* ============================================
-   VARIABLES Y PALETA DE COLORES
+   1. VARIABLES Y PALETA DE COLORES (InnoCR)
    ============================================ */
 :root {
+    /* Colores principales */
     --primario: #0F172A;
-    /* Azul Marino oscuro para textos principales */
+    /* Azul Marino oscuro */
     --secundario: #1E3A8A;
-    /* Azul fuerte para botones principales y enlaces */
+    /* Azul fuerte (botones) */
     --secundario-hover: #172554;
-    /* Azul más oscuro al pasar el mouse */
     --acento: #F97316;
-    /* Naranja SOLO para el logo y botón de inicio */
+    /* Naranja (Logo y detalles) */
     --acento-hover: #EA580C;
+
+    /* Fondos y textos */
     --fondo: #FFFFFF;
     --fondo-suave: #F8FAFC;
-    /* Gris muy sutil para inputs */
+    /* Gris muy sutil */
     --texto: #334155;
     --texto-suave: #64748B;
     --borde: #CBD5E1;
+
+    /* Estados */
     --exito: #10B981;
     --error: #EF4444;
     --whatsapp: #25D366;
+
+    /* Medidas */
     --radio: 14px;
     --radio-sm: 10px;
     --sombra: 0 2px 8px rgba(15, 23, 42, 0.06);
@@ -27,7 +33,7 @@
 }
 
 /* ============================================
-   RESET Y ESTILOS BASE
+   2. RESET Y ESTILOS BASE
    ============================================ */
 * {
     box-sizing: border-box;
@@ -58,7 +64,7 @@ body {
 }
 
 /* ============================================
-   ESTRUCTURA DE PANTALLAS
+   3. ESTRUCTURA DE PANTALLAS
    ============================================ */
 .pantalla {
     display: none;
@@ -119,7 +125,7 @@ body {
     margin-top: 12px;
 }
 
-/* Barra de Progreso */
+/* Progreso (Para el formulario del CV) */
 .progreso {
     margin-bottom: 8px;
 }
@@ -191,7 +197,7 @@ body {
 }
 
 /* ============================================
-   FORMULARIOS E INPUTS
+   4. FORMULARIOS E INPUTS
    ============================================ */
 label {
     display: block;
@@ -297,7 +303,7 @@ textarea {
 }
 
 /* ============================================
-   BLOQUES DINÁMICOS (EXPERIENCIA, EDUCACIÓN, ETC.)
+   5. BLOQUES DINÁMICOS (CV)
    ============================================ */
 .bloque {
     background: var(--fondo-suave);
@@ -330,7 +336,7 @@ textarea {
     margin-top: 0;
 }
 
-/* Botones de acción dentro de los bloques (Mover / Eliminar) */
+/* Botones de acción (Mover / Eliminar) */
 .bloque-acciones {
     display: flex;
     justify-content: flex-end;
@@ -390,7 +396,7 @@ textarea {
 }
 
 /* ============================================
-   BOTONES PRINCIPALES Y BARRA INFERIOR
+   6. BOTONES PRINCIPALES Y BARRA INFERIOR
    ============================================ */
 .barra-inferior {
     display: flex;
@@ -452,6 +458,16 @@ textarea {
     transform: scale(0.98);
 }
 
+.btn-destacado {
+    background: var(--acento);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.btn-destacado:hover {
+    background: var(--acento-hover);
+}
+
 .btn-grande {
     width: 100%;
     margin-top: 12px;
@@ -494,7 +510,7 @@ textarea {
 }
 
 /* ============================================
-   PANTALLA 0 (BIENVENIDA)
+   7. PANTALLA DE INICIO (Bienvenida)
    ============================================ */
 .pasos-info {
     list-style: none;
@@ -557,7 +573,7 @@ textarea {
 }
 
 /* ============================================
-   PANTALLAS DE ESTADO (ÉXITO / DUPLICADO)
+   8. PANTALLAS DE ESTADO (ÉXITO / DUPLICADO)
    ============================================ */
 .contenido-estado {
     flex: 1;
@@ -633,7 +649,7 @@ textarea {
 }
 
 /* ============================================
-   MODALES (ALERTAS, ESPERA, PRIVACIDAD)
+   9. MODALES (Alertas, Espera, Privacidad)
    ============================================ */
 .modal-overlay {
     position: fixed;
@@ -786,7 +802,6 @@ textarea {
     line-height: 1.5;
 }
 
-/* Enlace de Privacidad */
 .link-privacidad {
     color: var(--secundario);
     text-decoration: underline;
@@ -794,7 +809,7 @@ textarea {
     font-weight: 600;
 }
 
-/* Estilos específicos para el Modal de Alerta */
+/* Estilos para el Modal de Alerta */
 #modal-alerta .modal-contenido {
     animation: pop 0.3s ease;
 }
@@ -804,7 +819,7 @@ textarea {
 }
 
 /* ============================================
-   MEDIA QUERIES (RESPONSIVE)
+   10. MEDIA QUERIES (Móviles)
    ============================================ */
 @media (max-width: 640px) {
     #app {

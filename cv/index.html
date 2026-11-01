@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnoCR - Crea tu Currículum y Cartas</title>
+
+    <!-- Etiquetas Open Graph para WhatsApp -->
+    <meta property="og:title" content="InnoCR - Currículums y Cartas Profesionales">
+    <meta property="og:description"
+        content="Genera tu currículum y cartas de recomendación listos para enviar a reclutadores.">
+    <meta property="og:image" content="https://innocr.com/cv/anuncio.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Enlazamos el CSS compartido desde la raíz de /cv/ -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Estilos exclusivos para esta Landing Page */
+        .hub-contenido {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .tarjeta-servicio {
+            background: var(--fondo);
+            border: 1.5px solid var(--borde);
+            border-radius: var(--radio);
+            padding: 30px 24px;
+            text-decoration: none;
+            color: var(--texto);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tarjeta-servicio:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra-lg);
+            border-color: var(--secundario);
+        }
+
+        .tarjeta-servicio .icono-wrapper {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(30, 58, 138, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .tarjeta-servicio .icono-wrapper i {
+            font-size: 28px;
+            color: var(--secundario);
+        }
+
+        .tarjeta-servicio h3 {
+            color: var(--primario);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .tarjeta-servicio p {
+            font-size: 14px;
+            color: var(--texto-suave);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex: 1;
+            /* Para que los botones queden alineados al fondo */
+        }
+
+        .tarjeta-servicio .precio-tag {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primario);
+            margin-bottom: 20px;
+        }
+
+        .tarjeta-servicio .btn-primario {
+            width: 100%;
+            pointer-events: none;
+            /* El clic lo maneja toda la tarjeta */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <section class="pantalla activa">
+            <header class="cabecera">
+                <h1 class="logo"><span>CV</span> Inno<span>CR</span></h1>
+                <p class="eslogan">Tu próximo paso profesional empieza aquí</p>
+            </header>
+
+            <div class="contenido">
+                <h2 class="titulo-seccion" style="text-align: center; margin-bottom: 10px;">¿Qué deseas crear hoy?</h2>
+
+                <div class="hub-contenido">
+
+                    <!-- Opción 1: Currículum -->
+                    <a href="curriculum/index.html" class="tarjeta-servicio">
+                        <div class="icono-wrapper">
+                            <i class="fa-solid fa-file-invoice"></i>
+                        </div>
+                        <h3 id="titulo-servicio-cv">Currículum Profesional</h3>
+                        <p id="desc-servicio-cv">Cargando información...</p>
+                        <div class="precio-tag" id="precio-servicio-cv">₡...</div>
+                        <button class="btn-primario">Crear Currículum</button>
+                    </a>
+
+                    <!-- Opción 2: Carta de Recomendación -->
+                    <a href="recomendacion/index.html" class="tarjeta-servicio">
+                        <div class="icono-wrapper">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <h3 id="titulo-servicio-carta">Carta de Recomendación</h3>
+                        <p id="desc-servicio-carta">Cargando información...</p>
+                        <div class="precio-tag" id="precio-servicio-carta">₡...</div>
+                        <button class="btn-primario">Crear Carta</button>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cargamos el data.js para traer los textos y precios -->
+    <script src="data.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Validar que data.js se haya cargado
+            if (typeof CONFIG === 'undefined') {
+                console.error("No se pudo cargar data.js");
+                return;
+            }
+
+            // Inyectar datos del Currículum
+            document.getElementById('titulo-servicio-cv').textContent = CONFIG.servicios.curriculum.nombre;
+            document.getElementById('desc-servicio-cv').textContent = CONFIG.servicios.curriculum.descripcion;
+            document.getElementById('precio-servicio-cv').textContent = CONFIG.servicios.curriculum.precio_texto;
+
+            // Inyectar datos de la Carta
+            document.getElementById('titulo-servicio-carta').textContent = CONFIG.servicios.carta.nombre;
+            document.getElementById('desc-servicio-carta').textContent = CONFIG.servicios.carta.descripcion;
+            document.getElementById('precio-servicio-carta').textContent = CONFIG.servicios.carta.precio_texto;
+        });
+    </script>
+
+</body>
+
+</html>
