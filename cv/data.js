@@ -35,6 +35,9 @@ const CONFIG = {
     // ==========================================
     whatsapp: {
         numero: "50670373820",
+        mensajes_generales: {
+            consulta: "Hola, tengo una consulta sobre los servicios de Currículum y Cartas de Recomendación."
+        },
         mensajes_cv: {
             inicial: "Hola, acabo de llenar el formulario de mi Currículum. Quiero coordinar el pago y la entrega.",
             ya_lleno: "Hola, ya llené el formulario de mi Currículum anteriormente. Quiero coordinar el pago.",

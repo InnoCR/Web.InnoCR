@@ -600,6 +600,69 @@ textarea {
     pointer-events: none;
 }
 
+/* Tag informativo del pago */
+.tag-pago {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: #059669;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: var(--radio-sm);
+    margin: 0 auto 20px;
+    max-width: 420px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.tag-pago i {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* Botón "¿Tienes dudas?" — pill centrado */
+.btn-dudas-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--fondo);
+    color: var(--whatsapp);
+    border: 2px solid var(--whatsapp);
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(37, 211, 102, 0.15);
+}
+
+.btn-dudas-whatsapp:hover {
+    background: var(--whatsapp);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+}
+
+.btn-dudas-whatsapp:active {
+    transform: translateY(0);
+}
+
+.btn-dudas-whatsapp i {
+    font-size: 20px;
+}
+
+.btn-dudas-wrapper {
+    text-align: center;
+    margin-top: 28px;
+}
+
 /* ============================================
    10. PANTALLA DE BIENVENIDA / PRECIO
    ============================================ */
@@ -1046,5 +1109,10 @@ textarea {
     .toast-guardado {
         bottom: 80px;
         font-size: 12px;
+    }
+
+    .btn-dudas-whatsapp {
+        padding: 12px 22px;
+        font-size: 14px;
     }
 }
