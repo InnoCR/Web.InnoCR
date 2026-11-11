@@ -13,6 +13,11 @@
     <meta property="og:image" content="https://innocr.com/cv/anuncio.jpg">
     <meta property="og:type" content="website">
 
+    <!--
+        NOTA: Google Tag Manager se carga dinámicamente desde ../app.js
+        SOLO si el usuario acepta las cookies. No incluir el <script> aquí.
+    -->
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -142,14 +147,6 @@
             }
         }
     </style>
-
-    <!-- Google Analytics Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PHGKWSVQ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-    </script>
 </head>
 
 <body>
@@ -171,8 +168,8 @@
 
                 <h2 class="proximamente-titulo">Muy pronto</h2>
                 <p class="proximamente-subtitulo">
-                    Estamos trabajando en el formulario para crear tus <strong>cartas de recomendación</strong> con
-                    formato profesional, listas para acompañar tu currículum.
+                    Estamos trabajando en el formulario para crear tus <strong>cartas de recomendación</strong>
+                    listas para acompañar tu currículum.
                 </p>
 
                 <div id="banner-from-cv" class="proximamente-from-cv" style="display:none;">
@@ -206,30 +203,44 @@
             <footer
                 style="padding: 24px; text-align: center; border-top: 1px solid var(--borde); background: var(--fondo);">
                 <p style="font-size: 13px; color: var(--texto-suave); margin-bottom: 12px;">
-                    ¿Tienes dudas? Contáctanos
+                    Contáctanos
                 </p>
                 <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 16px;">
                     <a href="https://wa.me/50670373820" target="_blank"
-                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--whatsapp); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--secundario); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none; transition: all 0.2s;"
+                        onmouseover="this.style.background='var(--whatsapp)'; this.style.color='#fff'; this.style.borderColor='var(--whatsapp)';"
+                        onmouseout="this.style.background='var(--fondo)'; this.style.color='var(--secundario)'; this.style.borderColor='var(--borde)';"
                         title="WhatsApp">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                     <a href="https://www.facebook.com/Innocr2018" target="_blank"
-                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--secundario); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none;"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--secundario); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none; transition: all 0.2s;"
+                        onmouseover="this.style.background='var(--secundario)'; this.style.color='#fff';"
+                        onmouseout="this.style.background='var(--fondo)'; this.style.color='var(--secundario)';"
                         title="Facebook">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
                     <a href="https://www.instagram.com/innocostarica" target="_blank"
-                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--secundario); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none;"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--secundario); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none; transition: all 0.2s;"
+                        onmouseover="this.style.background='var(--secundario)'; this.style.color='#fff';"
+                        onmouseout="this.style.background='var(--fondo)'; this.style.color='var(--secundario)';"
                         title="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                     <a href="#" onclick="abrirModalPrivacidad(); return false;"
-                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--texto-suave); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none;"
-                        title="Política de Privacidad">
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--borde); background: var(--fondo); color: var(--texto-suave); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none; transition: all 0.2s;"
+                        onmouseover="this.style.background='var(--fondo-suave)';"
+                        onmouseout="this.style.background='var(--fondo)';" title="Política de Privacidad">
                         <i class="fa-solid fa-shield-halved"></i>
                     </a>
                 </div>
+
+                <!-- Enlace a cookies -->
+                <p style="font-size: 12px; color: var(--texto-suave); margin-bottom: 8px;">
+                    <a href="#" onclick="abrirModalCookies(); return false;"
+                        style="color: var(--texto-suave); text-decoration: underline;">Política de Cookies</a>
+                </p>
+
                 <p style="font-size: 12px; color: var(--texto-suave);">
                     &copy; <span id="anio-actual"></span> InnoCR. Todos los derechos reservados.
                 </p>
@@ -249,6 +260,19 @@
             </div>
         </div>
 
+        <!-- MODAL POLÍTICA DE COOKIES -->
+        <div id="modal-cookies" class="modal-overlay">
+            <div class="modal-contenido" style="max-width: 500px; text-align: left;">
+                <h3 style="text-align: center;">Política de Cookies</h3>
+                <p id="texto-cookies"
+                    style="font-size: 13px; white-space: pre-wrap; max-height: 300px; overflow-y: auto; background: var(--fondo-suave); padding: 15px; border-radius: 8px; color: var(--texto-suave);">
+                </p>
+                <div class="modal-botones">
+                    <button class="btn-entendido" onclick="cerrarModalCookies()">Entendido</button>
+                </div>
+            </div>
+        </div>
+
         <!-- MODAL ALERTA (por consistencia con app.js) -->
         <div id="modal-alerta" class="modal-overlay">
             <div class="modal-contenido" style="max-width: 340px; text-align: center;">
@@ -259,6 +283,21 @@
                 <p id="alerta-mensaje"
                     style="font-size: 14px; color: var(--texto-suave); line-height: 1.5; margin-bottom: 20px;"></p>
                 <button class="btn-primario" style="width: 100%;" onclick="cerrarModalAlerta()">Aceptar</button>
+            </div>
+        </div>
+
+        <!-- BANNER DE COOKIES -->
+        <div id="cookie-banner" class="cookie-banner">
+            <div class="cookie-banner-contenido">
+                <p class="cookie-banner-texto">
+                    Usamos cookies para analizar cómo navegas y mejorar tu experiencia. Puedes aceptar o rechazar su
+                    uso.
+                    <a href="#" onclick="abrirModalCookies(); return false;">Más información</a>
+                </p>
+                <div class="cookie-banner-botones">
+                    <button class="cookie-btn cookie-btn-rechazar" onclick="rechazarCookies()">Rechazar</button>
+                    <button class="cookie-btn cookie-btn-aceptar" onclick="aceptarCookies()">Aceptar todo</button>
+                </div>
             </div>
         </div>
 

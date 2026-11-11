@@ -116,7 +116,8 @@ function abrirWhatsApp(mensaje) {
         return;
     }
     const url = `https://wa.me/${CONFIG.whatsapp.numero}?text=${encodeURIComponent(mensaje)}`;
-    window.location.href = url;
+    // Abrir en nueva pestaña para no perder el contexto del sitio
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function normalizarIdentificacion(id) {
@@ -214,8 +215,6 @@ function poblarSelect(select, opciones) {
 
 /* ============================================
    5. REGISTRO DE CALLBACKS
-   Cada formulario (CV, Carta) registra sus callbacks
-   para que las utilidades genéricas los invoquen.
    ============================================ */
 const Callbacks = {
     guardar: null,
@@ -300,7 +299,151 @@ function mostrarToast(mensaje = 'Borrador guardado ✓') {
 }
 
 /* ============================================
-   8. INICIALIZACIÓN GLOBAL
+   8. GOOGLE TAG MANAGER Y COOKIES
+   ============================================ */
+
+// Estado interno del consentimiento
+const COOKIE_CONSENT = {
+    GRANTED: 'granted',
+    DENIED: 'denied'
+};
+
+// Devuelve la decisión guardada, o null si no hay
+function getConsentDecision() {
+    try {
+        const key = (typeof CONFIG !== 'undefined' && CONFIG.analytics && CONFIG.analytics.ls_key_consent)
+            ? CONFIG.analytics.ls_key_consent
+            : 'innocr_cookies_consent_v1';
+        const raw = localStorage.getItem(key);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        return (parsed && (parsed.decision === COOKIE_CONSENT.GRANTED || parsed.decision === COOKIE_CONSENT.DENIED))
+            ? parsed.decision
+            : null;
+    } catch (e) {
+        return null;
+    }
+}
+
+// Guarda la decisión
+function saveConsentDecision(decision) {
+    try {
+        const key = (typeof CONFIG !== 'undefined' && CONFIG.analytics && CONFIG.analytics.ls_key_consent)
+            ? CONFIG.analytics.ls_key_consent
+            : 'innocr_cookies_consent_v1';
+        localStorage.setItem(key, JSON.stringify({
+            decision: decision,
+            timestamp: Date.now()
+        }));
+    } catch (e) {
+        console.warn('No se pudo guardar la decisión de cookies:', e);
+    }
+}
+
+// Carga Google Tag Manager dinámicamente (solo si hay consentimiento)
+function cargarGTM() {
+    if (typeof CONFIG === 'undefined' || !CONFIG.analytics || !CONFIG.analytics.gtm_id) {
+        console.warn('GTM ID no configurado en data.js');
+        return;
+    }
+
+    const gtmId = CONFIG.analytics.gtm_id;
+
+    // Evitar cargar dos veces
+    if (document.getElementById('gtm-script')) return;
+
+    // Inicializar dataLayer + gtag antes de cargar GTM
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('consent', 'update', {
+        analytics_storage: 'granted'
+    });
+
+    // Inyectar el script de GTM
+    const script = document.createElement('script');
+    script.id = 'gtm-script';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtm.js?id=${gtmId}`;
+    document.head.appendChild(script);
+}
+
+// Muestra el banner si no hay decisión guardada
+function mostrarCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    // Si ya hay decisión guardada, no mostrar
+    if (getConsentDecision() !== null) return;
+
+    // Mostrar con animación
+    setTimeout(() => {
+        banner.classList.add('visible');
+    }, 300);
+}
+
+// Se llama al hacer clic en "Aceptar todo"
+function aceptarCookies() {
+    saveConsentDecision(COOKIE_CONSENT.GRANTED);
+
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('visible');
+
+    // Cargar GTM inmediatamente
+    cargarGTM();
+
+    // Recargar para asegurar que GTM se ejecuta limpiamente
+    setTimeout(() => {
+        window.location.reload();
+    }, 200);
+}
+
+// Se llama al hacer clic en "Rechazar"
+function rechazarCookies() {
+    saveConsentDecision(COOKIE_CONSENT.DENIED);
+
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('visible');
+
+    // NO se carga GTM (modo básico)
+    // No recargamos: no hay nada que cargar
+}
+
+// Se llama al hacer clic en "Más información"
+function abrirModalCookies() {
+    const modal = document.getElementById('modal-cookies');
+    if (!modal) return;
+
+    const textoEl = document.getElementById('texto-cookies');
+    if (textoEl && typeof CONFIG !== 'undefined' && CONFIG.legal && CONFIG.legal.texto_cookies) {
+        textoEl.textContent = CONFIG.legal.texto_cookies;
+    }
+
+    modal.classList.add('activo');
+}
+
+function cerrarModalCookies() {
+    const modal = document.getElementById('modal-cookies');
+    if (modal) modal.classList.remove('activo');
+}
+
+// Inicializa todo el sistema de cookies
+function inicializarCookies() {
+    const decision = getConsentDecision();
+
+    if (decision === COOKIE_CONSENT.GRANTED) {
+        // Ya aceptó antes: cargar GTM sin preguntar
+        cargarGTM();
+    } else if (decision === COOKIE_CONSENT.DENIED) {
+        // Ya rechazó: no cargar GTM, no mostrar banner
+    } else {
+        // Sin decisión: mostrar banner
+        mostrarCookieBanner();
+    }
+}
+
+/* ============================================
+   9. INICIALIZACIÓN GLOBAL
    ============================================ */
 document.addEventListener('DOMContentLoaded', () => {
     inicializarLandingPage();
@@ -314,4 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     activarSoloDigitos();
+
+    // Sistema de cookies + GTM
+    inicializarCookies();
 });

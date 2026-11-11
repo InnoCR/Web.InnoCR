@@ -56,7 +56,7 @@
             window.scrollTo(0, 0);
             const err = document.getElementById('mensaje-error');
             if (err) err.style.display = 'none';
-            guardarBorrador();
+            guardarBorradorConToast();
         }
     }
 
@@ -208,7 +208,6 @@
         if (!dia || !mes || !anio) return '';
         return `${dia}/${mes}/${anio}`;
     }
-
     /* ============================================
    6. CREACIÓN DE BLOQUES DINÁMICOS
    ============================================ */
@@ -415,6 +414,17 @@
         </div>`);
     }
 
+    // Guardar con toast cuando se agregue un bloque (delegación de eventos)
+    // Se engancha al final del DOMContentLoaded
+    function activarToastAlAgregarBloque() {
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.btn-agregar');
+            if (btn && btn.closest('#app')) {
+                setTimeout(guardarBorradorConToast, 50);
+            }
+        });
+    }
+
     /* ============================================
        7. RECOLECCIÓN DE DATOS
        ============================================ */
@@ -496,11 +506,16 @@
             })).filter(r => r.nombre)
         };
     }
-
     /* ============================================
    8. LOCALSTORAGE — BORRADOR
    ============================================ */
-    function guardarBorrador() {
+
+    /**
+     * Guarda el borrador en localStorage.
+     * @param {boolean} conToast - Si true, muestra el toast "Borrador guardado ✓".
+     *                              Por defecto es false (silencioso).
+     */
+    function guardarBorrador(conToast = false) {
         try {
             const datos = recolectarDatos();
             const pasoActual = document.querySelector('.pantalla.activa')?.id || 'pantalla-1';
@@ -509,13 +524,20 @@
                 paso: pasoActual,
                 timestamp: Date.now()
             }));
-            if (typeof mostrarToast === 'function') mostrarToast('Borrador guardado ✓');
+
+            if (conToast && typeof mostrarToast === 'function') {
+                mostrarToast('Borrador guardado ✓');
+            }
         } catch (e) {
             console.warn('No se pudo guardar el borrador:', e);
         }
     }
 
-    const guardarBorradorDebounced = debounce(guardarBorrador, 800);
+    // Guardado silencioso (para input/change)
+    const guardarBorradorDebounced = debounce(() => guardarBorrador(false), 800);
+
+    // Guardado con toast (para cambios de pantalla y acciones de bloque)
+    const guardarBorradorConToast = () => guardarBorrador(true);
 
     function limpiarBorrador() {
         localStorage.removeItem(LS_KEY_BORRADOR);
@@ -713,6 +735,7 @@
     }
 
     function activarAutoguardado() {
+        // Inputs y selects: guardado silencioso (sin toast)
         document.addEventListener('input', guardarBorradorDebounced);
         document.addEventListener('change', guardarBorradorDebounced);
     }
@@ -853,6 +876,7 @@
                 limpiarBorrador();
                 irAPantalla('exito');
 
+                // Solo abrir el modal de upsell. No auto-redirigir a WhatsApp.
                 setTimeout(() => {
                     abrirModalUpsell();
                 }, 800);
@@ -942,9 +966,9 @@
         poblarPaises();
         poblarCodigosTel();
 
-        // Registrar callbacks en app.js
+        // Registrar callback de guardado en app.js (con toast para mover/eliminar)
         if (typeof registrarCallbackGuardado === 'function') {
-            registrarCallbackGuardado(guardarBorrador);
+            registrarCallbackGuardado(guardarBorradorConToast);
         }
 
         // Restaurar borrador (si existe)
@@ -953,8 +977,11 @@
             setTimeout(mostrarBannerBorrador, 100);
         }
 
-        // Activar autoguardado
+        // Activar autoguardado (silencioso)
         activarAutoguardado();
+
+        // Activar toast al agregar bloques
+        activarToastAlAgregarBloque();
 
         // Exponer funciones usadas por onclick inline del HTML
         window.irAPantalla = irAPantalla;
@@ -973,6 +1000,7 @@
         window.volverInicioDesdeExito = volverInicioDesdeExito;
         window.irACrearCartas = irACrearCartas;
         window.irAWhatsAppDesdeUpsell = irAWhatsAppDesdeUpsell;
+        window.cerrarModalUpsell = cerrarModalUpsell;
     });
 
 })();

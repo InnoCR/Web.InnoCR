@@ -1070,7 +1070,91 @@ textarea {
 }
 
 /* ============================================
-   15. MEDIA QUERIES (RESPONSIVE)
+   15. BANNER DE COOKIES
+   ============================================ */
+.cookie-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primario);
+    color: #fff;
+    padding: 16px 20px;
+    z-index: 900;
+    box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.2);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.cookie-banner.visible {
+    transform: translateY(0);
+}
+
+.cookie-banner-contenido {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cookie-banner-texto {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #E2E8F0;
+}
+
+.cookie-banner-texto a {
+    color: var(--acento);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cookie-banner-texto a:hover {
+    color: var(--acento-hover);
+}
+
+.cookie-banner-botones {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cookie-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    border-radius: var(--radio-sm);
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+}
+
+.cookie-btn-aceptar {
+    background: var(--whatsapp);
+    color: #fff;
+}
+
+.cookie-btn-aceptar:hover {
+    background: #1EBE5A;
+}
+
+.cookie-btn-rechazar {
+    background: transparent;
+    color: #E2E8F0;
+    border: 1.5px solid rgba(226, 232, 240, 0.4);
+}
+
+.cookie-btn-rechazar:hover {
+    background: rgba(226, 232, 240, 0.1);
+}
+
+/* ============================================
+   16. MEDIA QUERIES (RESPONSIVE)
    ============================================ */
 @media (max-width: 640px) {
     #app {
@@ -1114,5 +1198,19 @@ textarea {
     .btn-dudas-whatsapp {
         padding: 12px 22px;
         font-size: 14px;
+    }
+
+    .cookie-banner {
+        padding: 14px 16px;
+    }
+
+    .cookie-banner-texto {
+        font-size: 13px;
+    }
+
+    .cookie-btn {
+        padding: 11px 14px;
+        font-size: 13px;
+        min-width: 100px;
     }
 }
