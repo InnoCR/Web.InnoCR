@@ -1,0 +1,512 @@
+/* ============================================
+   InnoCR — ESTILOS ADICIONALES (SPA)
+   ============================================ */
+
+/* 17. TARJETAS DE PRODUCTO */
+.tarjeta-servicio {
+    position: relative;
+    padding: 22px 18px;
+}
+
+.tarjeta-servicio .tag-producto {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--acento);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba(249, 115, 22, 0.3);
+}
+
+.tarjeta-servicio .icono-wrapper {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+}
+
+.tarjeta-servicio .icono-wrapper i {
+    font-size: 22px;
+}
+
+.tarjeta-servicio h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.tarjeta-servicio p {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.tarjeta-servicio .precio-tag {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.tarjeta-servicio .precio-desglose {
+    font-size: 11px;
+    color: var(--texto-suave);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.tarjeta-servicio .btn-primario {
+    min-height: 40px;
+    padding: 10px 14px;
+    font-size: 14px;
+}
+
+/* Grid de 2 columnas en desktop, 1 en móvil */
+.hub-contenido {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+@media (max-width: 640px) {
+    .hub-contenido {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 18. FOOTER */
+.footer-innocr {
+    padding: 30px 24px;
+    text-align: center;
+    border-top: 1px solid var(--borde);
+    background: var(--fondo);
+}
+
+.footer-contacto {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primario);
+    margin-bottom: 16px;
+}
+
+.footer-redes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-redes a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid var(--borde);
+    background: var(--fondo);
+    color: var(--secundario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.footer-redes a:hover {
+    background: var(--secundario);
+    color: #fff;
+    border-color: var(--secundario);
+    transform: translateY(-2px);
+}
+
+.footer-redes a[href*="wa.me"]:hover {
+    background: var(--whatsapp);
+    border-color: var(--whatsapp);
+}
+
+.footer-legal {
+    font-size: 12px;
+    color: var(--texto-suave);
+    margin-bottom: 12px;
+}
+
+.footer-legal a {
+    color: var(--texto-suave);
+    text-decoration: underline;
+}
+
+.footer-legal a:hover {
+    color: var(--secundario);
+}
+
+.footer-aviso {
+    font-size: 11px;
+    color: var(--texto-suave);
+    line-height: 1.5;
+    max-width: 520px;
+    margin: 0 auto 12px;
+    padding: 10px 14px;
+    background: var(--fondo-suave);
+    border-radius: var(--radio-sm);
+    border-left: 3px solid var(--acento);
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: var(--texto-suave);
+}
+
+/* 19. CAMPOS DEL FORMULARIO */
+.campo-wrapper {
+    margin-bottom: 20px;
+    animation: fadeIn 0.25s ease;
+}
+
+.btn-select-modal {
+    width: 100%;
+    padding: 13px 14px;
+    font-size: 16px;
+    font-family: inherit;
+    color: var(--texto);
+    background: var(--fondo);
+    border: 1.5px solid var(--borde);
+    border-radius: var(--radio-sm);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.btn-select-modal:hover {
+    border-color: var(--secundario);
+}
+
+.btn-select-modal:focus {
+    outline: none;
+    border-color: var(--secundario);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+}
+
+.btn-select-modal .select-valor {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.btn-select-modal i {
+    color: var(--texto-suave);
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.checkbox-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-grupo .checkbox-label {
+    margin: 0;
+}
+
+.checkbox-label.checkbox-legal {
+    background: rgba(249, 115, 22, 0.06);
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.checkbox-label.checkbox-legal:hover {
+    background: rgba(249, 115, 22, 0.1);
+}
+
+/* 20. PRECIO TOTAL EN FORMULARIO */
+.form-precio-total {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(15, 23, 42, 0.05));
+    border: 1.5px solid rgba(30, 58, 138, 0.2);
+    border-radius: var(--radio);
+    padding: 16px 18px;
+    margin: 24px 0 16px;
+    text-align: center;
+}
+
+.precio-linea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.precio-linea span {
+    font-size: 14px;
+    color: var(--texto-suave);
+    font-weight: 600;
+}
+
+.precio-linea strong {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primario);
+    letter-spacing: -0.5px;
+}
+
+.form-precio-total small {
+    display: block;
+    font-size: 12px;
+    color: var(--texto-suave);
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+.form-precio-total .nota-precio {
+    font-size: 12px;
+    color: var(--acento);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(30, 58, 138, 0.2);
+    line-height: 1.4;
+}
+
+/* 21. MODAL DE SELECCIÓN */
+.modal-seleccion-lista {
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding-right: 4px;
+}
+
+.modal-seleccion-lista::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-seleccion-lista::-webkit-scrollbar-thumb {
+    background: var(--borde);
+    border-radius: 3px;
+}
+
+.modal-seleccion-lista .opcion-radio {
+    margin-bottom: 8px;
+}
+
+.modal-seleccion-lista .opcion-radio small {
+    display: block;
+    color: var(--texto-suave);
+    font-size: 12px;
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+/* 22. INFO ÚTIL */
+.licencias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+}
+
+.licencia-chip {
+    background: linear-gradient(135deg, var(--secundario), var(--primario));
+    color: #fff;
+    border-radius: var(--radio-sm);
+    padding: 12px 10px;
+    text-align: center;
+    cursor: default;
+    transition: transform 0.15s;
+}
+
+.licencia-chip:hover {
+    transform: translateY(-2px);
+}
+
+.licencia-chip strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.licencia-chip small {
+    display: block;
+    font-size: 10px;
+    line-height: 1.3;
+    opacity: 0.9;
+}
+
+.info-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-item {
+    background: var(--fondo-suave);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-sm);
+    padding: 12px 14px;
+}
+
+.info-item strong {
+    display: block;
+    color: var(--primario);
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.info-item p {
+    font-size: 13px;
+    color: var(--texto-suave);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.enlaces-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.info-enlace-card {
+    display: block;
+    background: var(--fondo);
+    border: 1.5px solid var(--borde);
+    border-radius: var(--radio-sm);
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--texto);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.info-enlace-card:hover {
+    border-color: var(--secundario);
+    background: rgba(30, 58, 138, 0.03);
+    transform: translateY(-1px);
+}
+
+.info-enlace-tag {
+    display: inline-block;
+    background: var(--secundario);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.info-enlace-card strong {
+    display: block;
+    color: var(--primario);
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.info-enlace-card p {
+    font-size: 12px;
+    color: var(--texto-suave);
+    line-height: 1.4;
+    margin: 0 0 10px;
+}
+
+.info-enlace-gratis {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--exito);
+}
+
+.info-enlace-gratis i {
+    font-size: 10px;
+}
+
+.tag-gratis {
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 8px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* 23. NAVEGACIÓN ENTRE PASOS */
+.nav-pasos {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.nav-pasos button {
+    flex: 1;
+    min-height: 52px;
+}
+
+/* 24. BOTÓN VOLVER MEJORADO */
+.cabecera-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--fondo-suave);
+    border: 1.5px solid var(--borde);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--texto);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+    font-family: inherit;
+}
+
+.cabecera-volver:hover {
+    background: var(--secundario);
+    color: #fff;
+    border-color: var(--secundario);
+}
+
+.cabecera-volver i {
+    font-size: 12px;
+}
+
+/* 25. BOTÓN WHATSAPP GRANDE */
+.btn-whatsapp.btn-grande {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.btn-whatsapp.btn-grande i {
+    font-size: 20px;
+}
+
+/* 26. RESPONSIVE */
+@media (max-width: 640px) {
+    .precio-linea strong {
+        font-size: 20px;
+    }
+
+    .footer-aviso {
+        font-size: 10px;
+    }
+
+    .modal-seleccion-lista {
+        max-height: 45vh;
+    }
+
+    .licencias-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    }
+
+    .enlaces-grid {
+        grid-template-columns: 1fr;
+    }
+}
