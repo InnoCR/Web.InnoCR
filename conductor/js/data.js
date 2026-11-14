@@ -18,327 +18,281 @@ const CONFIG = {
 
     avisoLegalFooter: "InnoCR es un servicio independiente de información y acompañamiento en trámites. No somos COSEVI ni una institución pública. Los costos oficiales de cada trámite se pagan aparte.",
 
-    productos: [
+    /* --------------------------------------------
+       CATEGORÍAS DEL HUB
+       tipo: "productos" | "info" | "enlaces"
+       -------------------------------------------- */
+    categorias: [
 
-        // ---------- PAGO DE ENTEROS ----------
+        // ==========================================
+        // CATEGORÍA 1: SERVICIOS (productos de pago)
+        // ==========================================
         {
             id: 1,
-            titulo: "Pago de Enteros",
-            descripcion: "Pagamos tu entero de prueba teórica o práctica. Evitá filas y gastar tu tiempo.",
-            tag: null,
-            icono: "fa-solid fa-money-check-dollar",
-            activo: true,
-            seleccion: "unica",
-            precio: {
-                oficial: 5000,
-                gestion: 1000,
-                feeUnico: true
-            },
-            campos: [
+            titulo: "Servicios",
+            tipo: "productos",
+            items: [
+
+                // ---------- PAGO DE ENTEROS ----------
                 {
                     id: 1,
-                    clave: "tipoPrueba",
-                    tipo: "modal-select",
-                    label: "Tipo de prueba",
-                    requerido: true,
-                    multiple: false,
-                    opciones: [
-                        { id: 1, nombre: "Teórica Carro" },
-                        { id: 2, nombre: "Teórica Moto" },
-                        { id: 3, nombre: "Práctica", esPractica: true }
-                    ]
-                },
-                {
-                    id: 2,
-                    clave: "licencias",
-                    tipo: "modal-select",
-                    label: "Tipo de licencia",
-                    requerido: false,
-                    multiple: false,
-                    dependeDe: { campo: 1, valor: 3 },
-                    opciones: "tiposLicencia"
-                },
-                {
-                    id: 3,
-                    clave: "nombre",
-                    tipo: "text",
-                    label: "Nombre completo",
-                    requerido: true,
-                    placeholder: "Tu nombre"
-                },
-                {
-                    id: 4,
-                    clave: "cedula",
-                    tipo: "text",
-                    label: "Cédula",
-                    requerido: true,
-                    placeholder: "000000000"
-                },
-                {
-                    id: 5,
-                    clave: "legal",
-                    tipo: "checkbox-legal",
-                    label: "Entiendo que el costo oficial del entero es ₡5.000 y que InnoCR cobra ₡1.000 por gestión.",
-                    requerido: true
-                }
-            ],
-            mensajeWhatsApp: "Hola, quiero pagar entero(s) de prueba {tipoPrueba}{licencias}. Mi nombre es {nombre} y mi cédula es {cedula}. El total según la página es {total}."
-        },
-
-        // ---------- MANUALES / RESÚMENES ----------
-        {
-            id: 2,
-            titulo: "Resúmenes de Estudio",
-            descripcion: "Resúmenes basados en el manual oficial para preparar tu prueba teórica. Carro, Moto y Turismo.",
-            tag: "Para prueba teórica",
-            icono: "fa-solid fa-book-open",
-            activo: true,
-            seleccion: "multiple",
-            precio: {
-                oficial: 1500,
-                gestion: 0,
-                feeUnico: false
-            },
-            campos: [
-                {
-                    id: 1,
-                    clave: "vehiculos",
-                    tipo: "checkbox-group",
-                    label: "¿Qué resumen querés?",
-                    requerido: true,
-                    multiple: true,
-                    opciones: "tiposVehiculo"
-                },
-                {
-                    id: 2,
-                    clave: "legal",
-                    tipo: "checkbox-legal",
-                    label: "Entiendo que este material es un resumen de estudio basado en el manual oficial y no lo sustituye.",
-                    requerido: true
-                }
-            ],
-            mensajeWhatsApp: "Hola, quiero el resumen de estudio para {vehiculos}. El total según la página es {total}."
-        },
-
-        // ---------- DICTAMEN MÉDICO ----------
-        {
-            id: 3,
-            titulo: "Dictamen Médico",
-            descripcion: "Te coordinamos la cita con el doctor responsable de tu dictamen médico.",
-            tag: "Disponible en Cañas, Guanacaste",
-            icono: "fa-solid fa-stethoscope",
-            activo: true,
-            seleccion: "unica",
-            precio: {
-                oficial: null,
-                gestion: 2000,
-                feeUnico: true
-            },
-            campos: [
-                {
-                    id: 1,
-                    clave: "sede",
-                    tipo: "modal-select",
-                    label: "Sede",
-                    requerido: true,
-                    multiple: false,
-                    opciones: "sedesDictamen"
-                },
-                {
-                    id: 2,
-                    clave: "nombre",
-                    tipo: "text",
-                    label: "Nombre completo",
-                    requerido: true,
-                    placeholder: "Tu nombre"
-                },
-                {
-                    id: 3,
-                    clave: "cedula",
-                    tipo: "text",
-                    label: "Cédula",
-                    requerido: true,
-                    placeholder: "000000000"
-                },
-                {
-                    id: 4,
-                    clave: "motivo",
-                    tipo: "modal-select",
-                    label: "Motivo",
-                    requerido: true,
-                    multiple: false,
-                    opciones: [
-                        { id: 1, nombre: "Primera vez" },
-                        { id: 2, nombre: "Renovación" },
-                        { id: 3, nombre: "Otro" }
-                    ]
-                },
-                {
-                    id: 5,
-                    clave: "legal",
-                    tipo: "checkbox-legal",
-                    label: "Entiendo que InnoCR coordina la cita con el doctor responsable, quien aplica sus propios criterios médicos.",
-                    requerido: true
-                }
-            ],
-            mensajeWhatsApp: "Hola, quiero coordinar mi dictamen médico en {sede}. Mi nombre es {nombre} y mi cédula es {cedula}. Motivo: {motivo}. El total según la página es {total}. Entiendo que la cita la coordina el doctor responsable."
-        },
-
-        // ---------- TRASPASO DE VEHÍCULO (MULTI-PASO) ----------
-        {
-            id: 4,
-            titulo: "Traspaso de Vehículo",
-            descripcion: "Te coordinamos con un abogado para el traspaso de tu vehículo.",
-            tag: "Coordinación con abogado",
-            icono: "fa-solid fa-file-signature",
-            activo: true,
-            seleccion: "unica",
-            multipaso: true,
-            precio: {
-                oficial: null,
-                gestion: 2000,
-                feeUnico: true
-            },
-            notaPrecio: "El costo final depende del valor fiscal del vehículo y se confirma por WhatsApp.",
-            pasos: [
-                {
-                    titulo: "Datos del vehículo",
+                    titulo: "Pago de Enteros",
+                    descripcion: "Evita largas filas y ahorrá tiempo.",
+                    tag: "Prueba teórica o Práctica",
+                    icono: "fa-solid fa-money-check-dollar",
+                    activo: true,
+                    seleccion: "unica",
+                    precio: { oficial: 5000, gestion: 1000, feeUnico: true },
                     campos: [
                         {
-                            id: 1,
-                            clave: "tipoPlaca",
-                            tipo: "modal-select",
-                            label: "Tipo de placa",
-                            requerido: true,
-                            multiple: false,
-                            opciones: "tiposPlaca"
-                        },
-                        {
-                            id: 2,
-                            clave: "placa",
-                            tipo: "text",
-                            label: "Placa del vehículo",
-                            requerido: true,
-                            placeholder: "ABC123"
-                        }
-                    ]
-                },
-                {
-                    titulo: "Datos del propietario",
-                    campos: [
-                        {
-                            id: 3,
-                            clave: "propietarioNombre",
-                            tipo: "text",
-                            label: "Nombre completo del propietario",
-                            requerido: true,
-                            placeholder: "Nombre"
-                        },
-                        {
-                            id: 4,
-                            clave: "propietarioCedula",
-                            tipo: "text",
-                            label: "Cédula del propietario",
-                            requerido: true,
-                            placeholder: "000000000"
-                        },
-                        {
-                            id: 5,
-                            clave: "propietarioEstadoCivil",
-                            tipo: "modal-select",
-                            label: "Estado civil del propietario",
-                            requerido: true,
-                            multiple: false,
+                            id: 1, clave: "tipoPrueba", tipo: "modal-select",
+                            label: "Tipo de prueba", requerido: true, multiple: false,
                             opciones: [
-                                { id: 1, nombre: "Soltero(a)" },
-                                { id: 2, nombre: "Casado(a)" },
-                                { id: 3, nombre: "Divorciado(a)" },
-                                { id: 4, nombre: "Viudo(a)" },
-                                { id: 5, nombre: "Unión libre" }
+                                { id: 1, nombre: "Teórica Carro" },
+                                { id: 2, nombre: "Teórica Moto" },
+                                { id: 3, nombre: "Práctica", esPractica: true }
                             ]
                         },
                         {
-                            id: 6,
-                            clave: "propietarioProfesion",
-                            tipo: "text",
-                            label: "Profesión del propietario",
-                            requerido: true,
-                            placeholder: "Profesión"
+                            id: 2, clave: "licencias", tipo: "modal-select",
+                            label: "Tipo de licencia", requerido: false, multiple: false,
+                            dependeDe: { campo: 1, valor: 3 },
+                            opciones: "tiposLicencia"
                         },
                         {
-                            id: 7,
-                            clave: "propietarioDireccion",
-                            tipo: "text",
-                            label: "Dirección del propietario",
-                            requerido: true,
-                            placeholder: "Dirección"
-                        }
-                    ]
-                },
-                {
-                    titulo: "Datos del comprador",
-                    campos: [
-                        {
-                            id: 8,
-                            clave: "compradorNombre",
-                            tipo: "text",
-                            label: "Nombre completo del comprador",
-                            requerido: true,
-                            placeholder: "Nombre"
+                            id: 3, clave: "nombre", tipo: "text",
+                            label: "Nombre completo", requerido: true, placeholder: "Tu nombre"
                         },
                         {
-                            id: 9,
-                            clave: "compradorCedula",
-                            tipo: "text",
-                            label: "Cédula del comprador",
-                            requerido: true,
-                            placeholder: "000000000"
+                            id: 4, clave: "cedula", tipo: "text",
+                            label: "Cédula", requerido: true, placeholder: "000000000"
                         },
                         {
-                            id: 10,
-                            clave: "compradorEstadoCivil",
-                            tipo: "modal-select",
-                            label: "Estado civil del comprador",
-                            requerido: true,
-                            multiple: false,
-                            opciones: [
-                                { id: 1, nombre: "Soltero(a)" },
-                                { id: 2, nombre: "Casado(a)" },
-                                { id: 3, nombre: "Divorciado(a)" },
-                                { id: 4, nombre: "Viudo(a)" },
-                                { id: 5, nombre: "Unión libre" }
-                            ]
-                        },
-                        {
-                            id: 11,
-                            clave: "compradorProfesion",
-                            tipo: "text",
-                            label: "Profesión del comprador",
-                            requerido: true,
-                            placeholder: "Profesión"
-                        },
-                        {
-                            id: 12,
-                            clave: "compradorDireccion",
-                            tipo: "text",
-                            label: "Dirección del comprador",
-                            requerido: true,
-                            placeholder: "Dirección"
-                        },
-                        {
-                            id: 13,
-                            clave: "legal",
-                            tipo: "checkbox-legal",
-                            label: "Entiendo que InnoCR coordina con un abogado, quien aplica sus propios criterios legales y honorarios.",
+                            id: 5, clave: "legal", tipo: "checkbox-legal",
+                            label: "Entiendo que el costo oficial del entero es ₡5.000 y que InnoCR cobra ₡1.000 por gestión.",
                             requerido: true
                         }
-                    ]
+                    ],
+                    mensajeWhatsApp: "Hola, quiero pagar entero(s) de prueba {tipoPrueba}{licencias}. Mi nombre es {nombre} y mi cédula es {cedula}. El total según la página es {total}."
+                },
+
+                // ---------- RESÚMENES ----------
+                {
+                    id: 2,
+                    titulo: "Resúmenes de Estudio",
+                    descripcion: "Basados en el manual oficial para Carro, Moto y Turismo",
+                    tag: "Prueba teórica",
+                    icono: "fa-solid fa-book-open",
+                    activo: true,
+                    seleccion: "multiple",
+                    precio: { oficial: 1500, gestion: 0, feeUnico: false },
+                    campos: [
+                        {
+                            id: 1, clave: "vehiculos", tipo: "checkbox-group",
+                            label: "¿Qué resumen querés?", requerido: true, multiple: true,
+                            opciones: "tiposVehiculo"
+                        },
+                        {
+                            id: 2, clave: "legal", tipo: "checkbox-legal",
+                            label: "Entiendo que este material es un resumen de estudio basado en el manual oficial y no lo sustituye.",
+                            requerido: true
+                        }
+                    ],
+                    mensajeWhatsApp: "Hola, quiero el resumen de estudio para {vehiculos}. El total según la página es {total}."
+                },
+
+                // ---------- DICTAMEN ----------
+                {
+                    id: 3,
+                    titulo: "Dictamen Médico",
+                    descripcion: "Coordinamos la cita con el doctor responsable.",
+                    tag: "Disponible en Cañas, Guanacaste",
+                    icono: "fa-solid fa-stethoscope",
+                    activo: true,
+                    seleccion: "unica",
+                    precio: { oficial: null, gestion: 2000, feeUnico: true },
+                    campos: [
+                        {
+                            id: 1, clave: "sede", tipo: "modal-select",
+                            label: "Sede", requerido: true, multiple: false,
+                            opciones: "sedesDictamen"
+                        },
+                        {
+                            id: 2, clave: "nombre", tipo: "text",
+                            label: "Nombre completo", requerido: true, placeholder: "Tu nombre"
+                        },
+                        {
+                            id: 3, clave: "cedula", tipo: "text",
+                            label: "Cédula", requerido: true, placeholder: "000000000"
+                        },
+                        {
+                            id: 4, clave: "motivo", tipo: "modal-select",
+                            label: "Motivo", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Primera vez" },
+                                { id: 2, nombre: "Renovación" },
+                                { id: 3, nombre: "Otro" }
+                            ]
+                        },
+                        {
+                            id: 5, clave: "legal", tipo: "checkbox-legal",
+                            label: "Entiendo que InnoCR coordina la cita con el doctor responsable, quien aplica sus propios criterios médicos.",
+                            requerido: true
+                        }
+                    ],
+                    mensajeWhatsApp: "Hola, quiero coordinar mi dictamen médico en {sede}. Mi nombre es {nombre} y mi cédula es {cedula}. Motivo: {motivo}. El total según la página es {total}. Entiendo que la cita la coordina el doctor responsable."
+                },
+
+                // ---------- TRASPASO (MULTIPASO) ----------
+                {
+                    id: 4,
+                    titulo: "Traspaso de Vehículo",
+                    descripcion: "Coordinamos con un abogado para el traspaso.",
+                    tag: "Disponible en Cañas, Guanacaste",
+                    icono: "fa-solid fa-file-signature",
+                    activo: true,
+                    seleccion: "unica",
+                    multipaso: true,
+                    precio: { oficial: null, gestion: 2000, feeUnico: true },
+                    notaPrecio: "El costo final depende del valor fiscal del vehículo y se confirma por WhatsApp.",
+                    pasos: [
+                        {
+                            titulo: "Datos del vehículo",
+                            campos: [
+                                {
+                                    id: 1, clave: "tipoPlaca", tipo: "modal-select",
+                                    label: "Tipo de placa", requerido: true, multiple: false,
+                                    opciones: "tiposPlaca"
+                                },
+                                {
+                                    id: 2, clave: "placa", tipo: "text",
+                                    label: "Placa del vehículo", requerido: true, placeholder: "ABC123"
+                                }
+                            ]
+                        },
+                        {
+                            titulo: "Datos del propietario",
+                            campos: [
+                                { id: 3, clave: "propietarioNombre", tipo: "text", label: "Nombre completo del propietario", requerido: true, placeholder: "Nombre" },
+                                { id: 4, clave: "propietarioCedula", tipo: "text", label: "Cédula del propietario", requerido: true, placeholder: "000000000" },
+                                {
+                                    id: 5, clave: "propietarioEstadoCivil", tipo: "modal-select",
+                                    label: "Estado civil del propietario", requerido: true, multiple: false,
+                                    opciones: [
+                                        { id: 1, nombre: "Soltero(a)" },
+                                        { id: 2, nombre: "Casado(a)" },
+                                        { id: 3, nombre: "Divorciado(a)" },
+                                        { id: 4, nombre: "Viudo(a)" },
+                                        { id: 5, nombre: "Unión libre" }
+                                    ]
+                                },
+                                { id: 6, clave: "propietarioProfesion", tipo: "text", label: "Profesión del propietario", requerido: true, placeholder: "Profesión" },
+                                { id: 7, clave: "propietarioDireccion", tipo: "text", label: "Dirección del propietario", requerido: true, placeholder: "Dirección" }
+                            ]
+                        },
+                        {
+                            titulo: "Datos del comprador",
+                            campos: [
+                                { id: 8, clave: "compradorNombre", tipo: "text", label: "Nombre completo del comprador", requerido: true, placeholder: "Nombre" },
+                                { id: 9, clave: "compradorCedula", tipo: "text", label: "Cédula del comprador", requerido: true, placeholder: "000000000" },
+                                {
+                                    id: 10, clave: "compradorEstadoCivil", tipo: "modal-select",
+                                    label: "Estado civil del comprador", requerido: true, multiple: false,
+                                    opciones: [
+                                        { id: 1, nombre: "Soltero(a)" },
+                                        { id: 2, nombre: "Casado(a)" },
+                                        { id: 3, nombre: "Divorciado(a)" },
+                                        { id: 4, nombre: "Viudo(a)" },
+                                        { id: 5, nombre: "Unión libre" }
+                                    ]
+                                },
+                                { id: 11, clave: "compradorProfesion", tipo: "text", label: "Profesión del comprador", requerido: true, placeholder: "Profesión" },
+                                { id: 12, clave: "compradorDireccion", tipo: "text", label: "Dirección del comprador", requerido: true, placeholder: "Dirección" },
+                                {
+                                    id: 13, clave: "legal", tipo: "checkbox-legal",
+                                    label: "Entiendo que InnoCR coordina con un abogado, quien aplica sus propios criterios legales y honorarios.",
+                                    requerido: true
+                                }
+                            ]
+                        }
+                    ],
+                    mensajeWhatsApp: "Hola, quiero coordinar un traspaso de vehículo. Tipo de placa: {tipoPlaca}. Placa: {placa}. Propietario: {propietarioNombre}, cédula {propietarioCedula}, estado civil {propietarioEstadoCivil}, profesión {propietarioProfesion}, dirección {propietarioDireccion}. Comprador: {compradorNombre}, cédula {compradorCedula}, estado civil {compradorEstadoCivil}, profesión {compradorProfesion}, dirección {compradorDireccion}. Entiendo que el costo se calcula según el valor del vehículo y que la coordinación es con un abogado."
                 }
-            ],
-            mensajeWhatsApp: "Hola, quiero coordinar un traspaso de vehículo. Tipo de placa: {tipoPlaca}. Placa: {placa}. Propietario: {propietarioNombre}, cédula {propietarioCedula}, estado civil {propietarioEstadoCivil}, profesión {propietarioProfesion}, dirección {propietarioDireccion}. Comprador: {compradorNombre}, cédula {compradorCedula}, estado civil {compradorEstadoCivil}, profesión {compradorProfesion}, dirección {compradorDireccion}. Entiendo que el costo se calcula según el valor del vehículo y que la coordinación es con un abogado."
+
+            ]
+        },
+
+        // ==========================================
+        // CATEGORÍA 2: INFORMACIÓN (gratuita)
+        // ==========================================
+        {
+            id: 2,
+            titulo: "Información",
+            tipo: "info",
+            items: [
+                {
+                    id: 1,
+                    titulo: "Tipos de Licencia",
+                    descripcion: "Conocé las licencias A1, A2, B1 y más.",
+                    tag: "Gratis",
+                    icono: "fa-solid fa-id-card",
+                    tipoModal: "licencias"
+                },
+                {
+                    id: 2,
+                    titulo: "Tipos de Placa",
+                    descripcion: "Particular, taxi, autobús y más.",
+                    tag: "Gratis",
+                    icono: "fa-solid fa-car",
+                    tipoModal: "placas"
+                }
+            ]
+        },
+
+        // ==========================================
+        // CATEGORÍA 3: SERVICIOS PÚBLICOS (enlaces)
+        // ==========================================
+        {
+            id: 3,
+            titulo: "Servicios públicos",
+            tipo: "enlaces",
+            items: [
+                {
+                    id: 1,
+                    nombre: "Citas Inspección Vehicular",
+                    entidad: "DEKRA",
+                    url: "https://booking.dekra.com/book/customer-retail/CR",
+                    descripcion: "Agendá tu Revisión Técnica Vehicular."
+                },
+                {
+                    id: 2,
+                    nombre: "Consulta de Marchamo",
+                    entidad: "INS",
+                    url: "https://marchamo.grupoins.com/",
+                    descripcion: "Consultá y pagá el derecho de circulación."
+                },
+                {
+                    id: 3,
+                    nombre: "Mi Usuario COSEVI",
+                    entidad: "COSEVI",
+                    url: "https://servicios.educacionvial.go.cr/Formularios/IngresarCuenta",
+                    descripcion: "Ingresá a tu cuenta para trámites en línea."
+                },
+                {
+                    id: 4,
+                    nombre: "Citas de Licencia",
+                    entidad: "BCR",
+                    url: "https://bcrcita.bancobcr.com/citas/Home/",
+                    descripcion: "Agendá cita para renovación o primera licencia."
+                }
+            ]
         }
 
     ],
+
+    /* --------------------------------------------
+       DATOS REUTILIZABLES
+       -------------------------------------------- */
 
     tiposLicencia: [
         { id: 1, nombre: "A1", descripcion: "Motocicleta hasta 125 cc (o 11 kW eléctrica)" },
@@ -389,44 +343,6 @@ const CONFIG = {
         { id: 3, nombre: "Autobús", descripcion: "Provincia + B. Ej: SJB-XXXX. Incluye transporte estudiantil y servicio especial" },
         { id: 4, nombre: "SEETAXI", descripcion: "Inicia con SE + provincia. Ej: SEA-XXX. Empresas de taxi" },
         { id: 5, nombre: "Motocicleta", descripcion: "Formato numérico de 6 dígitos. Nuevo formato: MOT 123ABC" }
-    ],
-
-    enlacesOficiales: [
-        {
-            id: 1,
-            nombre: "Citas Inspección Vehicular",
-            entidad: "DEKRA",
-            url: "https://www.dekra.com/cr/",
-            descripcion: "Agendá tu Revisión Técnica Vehicular obligatoria."
-        },
-        {
-            id: 2,
-            nombre: "Consulta de Marchamo",
-            entidad: "INS",
-            url: "https://www.ins-cr.com/",
-            descripcion: "Consultá y pagá el derecho de circulación."
-        },
-        {
-            id: 3,
-            nombre: "Mi Usuario COSEVI",
-            entidad: "COSEVI",
-            url: "https://www.csv.go.cr/",
-            descripcion: "Ingresá a tu cuenta para trámites en línea."
-        },
-        {
-            id: 4,
-            nombre: "Citas de Licencia",
-            entidad: "BCR",
-            url: "https://bcrcita.bancobcr.com/citas/Home/",
-            descripcion: "Agendá cita para renovación o primera licencia. Gratuito."
-        },
-        {
-            id: 5,
-            nombre: "Portal MOPT",
-            entidad: "MOPT",
-            url: "https://www.mopt.go.cr/",
-            descripcion: "Ministerio de Obras Públicas y Transportes."
-        }
     ],
 
     textosLegales: {

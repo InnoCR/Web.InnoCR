@@ -1,6 +1,6 @@
 /* ============================================
-   InnoCR — app.js
-   Lógica principal de la SPA.
+   InnoCR Conductor — app.js
+   Lógica principal de la SPA. Autocontenido.
    ============================================ */
 
 const App = {
@@ -14,16 +14,12 @@ const App = {
 
     iniciar() {
         this.renderizarHub();
-        this.renderizarInfoUtil();
         this.inicializarCookies();
         this.configurarNavegacion();
         this.actualizarAnio();
         this.renderizarAvisoLegal();
     },
 
-    /* --------------------------------------------
-       NAVEGACIÓN
-       -------------------------------------------- */
     irAPantalla(idPantalla) {
         document.querySelectorAll(".pantalla").forEach(p => p.classList.remove("activa"));
         const destino = document.getElementById(idPantalla);
@@ -42,15 +38,40 @@ const App = {
         });
     },
 
-    /* --------------------------------------------
-       HUB
-       -------------------------------------------- */
+    /* ============================================
+       HUB POR CATEGORÍAS
+       ============================================ */
     renderizarHub() {
-        const contenedor = document.getElementById("hub-productos");
+        const contenedor = document.getElementById("hub-categorias");
         if (!contenedor) return;
         contenedor.innerHTML = "";
 
-        CONFIG.productos.filter(p => p.activo).forEach(producto => {
+        CONFIG.categorias.forEach(categoria => {
+            const seccion = document.createElement("section");
+            seccion.className = "categoria";
+
+            const titulo = document.createElement("h2");
+            titulo.className = "titulo-categoria";
+            titulo.textContent = categoria.titulo;
+            seccion.appendChild(titulo);
+
+            if (categoria.tipo === "productos") {
+                seccion.appendChild(this.renderizarProductos(categoria.items));
+            } else if (categoria.tipo === "info") {
+                seccion.appendChild(this.renderizarInfo(categoria.items));
+            } else if (categoria.tipo === "enlaces") {
+                seccion.appendChild(this.renderizarEnlaces(categoria.items));
+            }
+
+            contenedor.appendChild(seccion);
+        });
+    },
+
+    renderizarProductos(items) {
+        const grid = document.createElement("div");
+        grid.className = "hub-contenido";
+
+        items.filter(p => p.activo).forEach(producto => {
             const tarjeta = document.createElement("a");
             tarjeta.href = "#";
             tarjeta.className = "tarjeta-servicio";
@@ -70,7 +91,7 @@ const App = {
 
             const tagHtml = producto.tag
                 ? `<div class="tag-producto">${Utils.escaparHtml(producto.tag)}</div>`
-                : "";
+                : `<div class="tag-producto tag-vacio"></div>`;
 
             tarjeta.innerHTML = `
         ${tagHtml}
@@ -89,20 +110,91 @@ const App = {
                 this.abrirProducto(producto.id);
             });
 
-            contenedor.appendChild(tarjeta);
+            grid.appendChild(tarjeta);
         });
+
+        return grid;
     },
 
-    /* --------------------------------------------
-       ABRIR PRODUCTO
-       -------------------------------------------- */
-    abrirProducto(idProducto) {
-        const producto = CONFIG.productos.find(p => p.id === idProducto);
+    renderizarInfo(items) {
+        const grid = document.createElement("div");
+        grid.className = "hub-contenido";
+
+        items.forEach(item => {
+            const tarjeta = document.createElement("a");
+            tarjeta.href = "#";
+            tarjeta.className = "tarjeta-servicio tarjeta-info";
+            tarjeta.dataset.tipoModal = item.tipoModal;
+
+            tarjeta.innerHTML = `
+        <div class="tag-producto tag-gratis-card">${Utils.escaparHtml(item.tag)}</div>
+        <div class="icono-wrapper">
+          <i class="${item.icono}"></i>
+        </div>
+        <h3>${Utils.escaparHtml(item.titulo)}</h3>
+        <p>${Utils.escaparHtml(item.descripcion)}</p>
+        <button class="btn-primario" type="button">Ver información</button>
+      `;
+
+            tarjeta.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.abrirModalInfo(item.tipoModal);
+            });
+
+            grid.appendChild(tarjeta);
+        });
+
+        return grid;
+    },
+
+    renderizarEnlaces(items) {
+        const grid = document.createElement("div");
+        grid.className = "enlaces-grid";
+
+        items.forEach(enlace => {
+            const tarjeta = document.createElement("a");
+            tarjeta.href = enlace.url;
+            tarjeta.target = "_blank";
+            tarjeta.rel = "noopener";
+            tarjeta.className = "info-enlace-card";
+
+            tarjeta.innerHTML = `
+        <div class="info-enlace-tag">${Utils.escaparHtml(enlace.entidad)}</div>
+        <strong>${Utils.escaparHtml(enlace.nombre)}</strong>
+        <p>${Utils.escaparHtml(enlace.descripcion)}</p>
+        <span class="info-enlace-link">Ir al sitio <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      `;
+
+            grid.appendChild(tarjeta);
+        });
+
+        return grid;
+    },
+
+    /* ============================================
+       ABRIR PRODUCTO (con preselección opcional)
+       ============================================ */
+    abrirProducto(idProducto, preseleccion) {
+        let producto = null;
+        CONFIG.categorias.forEach(cat => {
+            if (cat.tipo === "productos") {
+                const found = cat.items.find(p => p.id === idProducto);
+                if (found) producto = found;
+            }
+        });
+
         if (!producto) return;
 
         this.estado.productoActual = producto;
         this.estado.selecciones = {};
         this.estado.pasoActual = 0;
+
+        // Aplicar preselección si viene
+        if (preseleccion && typeof preseleccion === "object") {
+            Object.keys(preseleccion).forEach(campoId => {
+                this.estado.selecciones[campoId] = preseleccion[campoId];
+            });
+        }
 
         const titulo = document.getElementById("form-titulo");
         if (titulo) titulo.textContent = producto.titulo;
@@ -118,63 +210,80 @@ const App = {
         }
     },
 
-    /* --------------------------------------------
-       INFO ÚTIL
-       -------------------------------------------- */
-    renderizarInfoUtil() {
-        const contLicencias = document.getElementById("info-licencias");
-        if (contLicencias) {
-            contLicencias.innerHTML = CONFIG.tiposLicencia.map(lic => `
-        <div class="licencia-chip" title="${Utils.escaparHtml(lic.descripcion)}">
-          <strong>${Utils.escaparHtml(lic.nombre)}</strong>
-          <small>${Utils.escaparHtml(lic.descripcion)}</small>
-        </div>
-      `).join("");
-        }
+    /* ============================================
+       MODAL DE INFORMACIÓN (con botón solicitar)
+       ============================================ */
+    abrirModalInfo(tipoModal) {
+        const overlay = document.getElementById("modal-seleccion");
+        const titulo = document.getElementById("modal-seleccion-titulo");
+        const lista = document.getElementById("modal-seleccion-lista");
+        const btnConfirmar = document.getElementById("modal-seleccion-confirmar");
+        const btnCancelar = document.getElementById("modal-seleccion-cancelar");
 
-        const contPlacas = document.getElementById("info-placas");
-        if (contPlacas) {
-            contPlacas.innerHTML = CONFIG.tiposPlaca.map(placa => `
-        <div class="info-item">
-          <strong>${Utils.escaparHtml(placa.nombre)}</strong>
-          <p>${Utils.escaparHtml(placa.descripcion)}</p>
-        </div>
-      `).join("");
-        }
+        if (!overlay) return;
 
-        const contEnlaces = document.getElementById("info-enlaces");
-        if (contEnlaces) {
-            contEnlaces.innerHTML = CONFIG.enlacesOficiales.map(enlace => `
-        <a href="${enlace.url}" target="_blank" rel="noopener" class="info-enlace-card">
-          <div class="info-enlace-tag">${Utils.escaparHtml(enlace.entidad)}</div>
-          <strong>${Utils.escaparHtml(enlace.nombre)}</strong>
-          <p>${Utils.escaparHtml(enlace.descripcion)}</p>
-          <span class="info-enlace-gratis">Gratis <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-        </a>
-      `).join("");
-        }
+        const items = tipoModal === "licencias" ? CONFIG.tiposLicencia : CONFIG.tiposPlaca;
+        titulo.textContent = tipoModal === "licencias" ? "Tipos de licencia" : "Tipos de placa";
+
+        lista.innerHTML = "";
+        items.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "info-item";
+            div.innerHTML = `
+        <div class="info-item-info">
+          <strong>${Utils.escaparHtml(item.nombre)}</strong>
+          <p>${Utils.escaparHtml(item.descripcion)}</p>
+        </div>
+        <button class="btn-solicitar-info" type="button">
+          <i class="fa-brands fa-whatsapp"></i> Solicitar
+        </button>
+      `;
+
+            const btn = div.querySelector(".btn-solicitar-info");
+            btn.addEventListener("click", () => {
+                overlay.classList.remove("activo");
+                if (tipoModal === "licencias") {
+                    this.abrirProducto(1, {
+                        1: [{ id: 3, nombre: "Práctica", esPractica: true }],
+                        2: [item]
+                    });
+                } else {
+                    this.abrirProducto(4, {
+                        1: [item]
+                    });
+                }
+            });
+
+            lista.appendChild(div);
+        });
+
+        overlay.classList.add("activo");
+
+        btnConfirmar.textContent = "Entendido";
+        btnConfirmar.onclick = () => overlay.classList.remove("activo");
+        btnCancelar.style.display = "none";
     },
 
-    /* --------------------------------------------
+    /* ============================================
        COOKIES
-       -------------------------------------------- */
+       ============================================ */
     inicializarCookies() {
         const banner = document.getElementById("cookie-banner");
         if (!banner) return;
 
-        const preferencia = localStorage.getItem("innocr_cookies");
+        const preferencia = localStorage.getItem("innocr_conductor_cookies");
         if (!preferencia) {
             setTimeout(() => banner.classList.add("visible"), 800);
         }
 
         window.aceptarCookies = () => {
-            localStorage.setItem("innocr_cookies", "aceptadas");
+            localStorage.setItem("innocr_conductor_cookies", "aceptadas");
             banner.classList.remove("visible");
             Utils.mostrarToast("Cookies aceptadas");
         };
 
         window.rechazarCookies = () => {
-            localStorage.setItem("innocr_cookies", "rechazadas");
+            localStorage.setItem("innocr_conductor_cookies", "rechazadas");
             banner.classList.remove("visible");
             Utils.mostrarToast("Cookies rechazadas");
         };
@@ -205,12 +314,10 @@ const App = {
     /* ============================================
        MOTOR DE FORMULARIOS
        ============================================ */
-
     renderizarFormulario(producto) {
         const contenedor = document.getElementById("form-campos");
         if (!contenedor) return;
         contenedor.innerHTML = "";
-        this.estado.selecciones = {};
 
         const barra = document.getElementById("barra-progreso-wrapper");
         if (barra) barra.style.display = "none";
@@ -232,7 +339,6 @@ const App = {
         const pasos = this.estado.pasos;
         const paso = pasos[this.estado.pasoActual];
 
-        // Barra de progreso
         const barra = document.getElementById("barra-progreso-wrapper");
         if (barra) {
             barra.style.display = "";
@@ -243,18 +349,15 @@ const App = {
             if (texto) texto.textContent = `Paso ${this.estado.pasoActual + 1} de ${pasos.length}`;
         }
 
-        // Título del paso
         const h = document.createElement("h3");
         h.className = "titulo-seccion";
         h.textContent = paso.titulo;
         contenedor.appendChild(h);
 
-        // Campos del paso
         paso.campos.forEach(campo => {
             contenedor.appendChild(this.crearCampoWrapper(campo));
         });
 
-        // Navegación
         const nav = document.createElement("div");
         nav.className = "nav-pasos";
 
@@ -294,7 +397,6 @@ const App = {
         const pasos = this.estado.pasos;
         const paso = pasos[this.estado.pasoActual];
 
-        // Validar campos del paso actual
         for (const campo of paso.campos) {
             if (!campo.requerido) continue;
             const val = this.estado.selecciones[campo.id];
@@ -321,7 +423,6 @@ const App = {
         wrapper.className = "campo-wrapper";
         wrapper.dataset.campoId = campo.id;
 
-        // Para checkbox-legal, NO agregamos label arriba (el propio checkbox tiene el texto)
         if (campo.tipo !== "checkbox-legal") {
             const label = document.createElement("label");
             label.textContent = campo.label;
@@ -358,6 +459,10 @@ const App = {
         input.id = `campo-${campo.id}`;
         input.placeholder = campo.placeholder || "";
         input.dataset.campoId = campo.id;
+
+        const previo = this.estado.selecciones[campo.id];
+        if (previo && typeof previo === "string") input.value = previo;
+
         input.addEventListener("input", () => {
             this.estado.selecciones[campo.id] = input.value.trim();
             this.actualizarPrecio();
@@ -373,7 +478,6 @@ const App = {
         btn.dataset.campoId = campo.id;
         btn.innerHTML = `<span class="select-valor">Seleccionar...</span> <i class="fa-solid fa-chevron-down"></i>`;
 
-        // Restaurar valor si ya estaba seleccionado
         const previo = this.estado.selecciones[campo.id];
         if (previo && previo.length) {
             btn.querySelector(".select-valor").textContent = previo.map(s => s.nombre).join(", ");
@@ -509,6 +613,10 @@ const App = {
 
         overlay.classList.add("activo");
 
+        btnConfirmar.textContent = "Confirmar";
+        btnCancelar.style.display = "";
+        btnCancelar.textContent = "Cancelar";
+
         btnConfirmar.onclick = () => {
             const marcados = Array.from(lista.querySelectorAll("input:checked"))
                 .map(i => opciones.find(o => o.id == i.value));
@@ -521,9 +629,6 @@ const App = {
         };
     },
 
-    /* --------------------------------------------
-       PRECIO
-       -------------------------------------------- */
     actualizarPrecio() {
         const producto = this.estado.productoActual;
         const cont = document.getElementById("form-precio-total");
@@ -532,12 +637,12 @@ const App = {
         let total = 0;
         let desglose = "";
 
+        const todosCampos = producto.multipaso
+            ? producto.pasos.flatMap(p => p.campos)
+            : producto.campos;
+
         if (producto.precio.oficial !== null) {
             let unidades = 1;
-
-            const todosCampos = producto.multipaso
-                ? producto.pasos.flatMap(p => p.campos)
-                : producto.campos;
 
             todosCampos.forEach(campo => {
                 if (campo.multiple && Array.isArray(this.estado.selecciones[campo.id]) && this.estado.selecciones[campo.id].length > 0) {
@@ -564,10 +669,6 @@ const App = {
         }
 
         if (producto.precio.oficial === null) {
-            const todosCampos = producto.multipaso
-                ? producto.pasos.flatMap(p => p.campos)
-                : producto.campos;
-
             todosCampos.forEach(campo => {
                 if (campo.opciones === "sedesDictamen" || campo.opciones === "sedesTraspaso") {
                     const sel = this.estado.selecciones[campo.id];
@@ -605,9 +706,6 @@ const App = {
         contenedor.appendChild(btnWa);
     },
 
-    /* --------------------------------------------
-       ENVIAR POR WHATSAPP
-       -------------------------------------------- */
     enviarPorWhatsApp() {
         const producto = this.estado.productoActual;
         if (!producto) return;
@@ -616,7 +714,6 @@ const App = {
             ? producto.pasos.flatMap(p => p.campos)
             : producto.campos;
 
-        // Validar requeridos
         for (const campo of todosCampos) {
             if (!campo.requerido) continue;
             const val = this.estado.selecciones[campo.id];
@@ -633,7 +730,6 @@ const App = {
             }
         }
 
-        // Validación: licencia obligatoria si elige Práctica
         const campoPrueba = todosCampos.find(c => c.clave === "tipoPrueba");
         const campoLicencia = todosCampos.find(c => c.clave === "licencias");
 
@@ -683,9 +779,6 @@ const App = {
         window.open(url, "_blank");
     },
 
-    /* --------------------------------------------
-       MODAL PRIVACIDAD
-       -------------------------------------------- */
     abrirModalPrivacidad() {
         const modal = document.getElementById("modal-privacidad");
         const texto = document.getElementById("texto-privacidad");

@@ -4,17 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InnoCR | Trámites y Servicios para Conductores en Costa Rica</title>
+    <title>InnoCR Conductor | Trámites y Servicios para Conductores en Costa Rica</title>
 
-    <meta property="og:title" content="InnoCR - Trámites y Servicios para Conductores">
+    <meta property="og:title" content="InnoCR Conductor - Trámites y Servicios para Conductores">
     <meta property="og:description"
         content="Pago de enteros, resúmenes de estudio, dictamen médico y traspasos. Todo coordinado por WhatsApp.">
-    <meta property="og:image" content="https://innocr.com/cv/anuncio.jpg">
     <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <link rel="stylesheet" href="../cv/styles.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -22,30 +19,28 @@
 
     <div id="app">
 
-        <!-- ============================================
-             PANTALLA 1: HUB
-             ============================================ -->
+        <!-- PANTALLA 1: HUB -->
         <section id="pantalla-hub" class="pantalla activa">
             <header class="cabecera">
                 <h1 class="logo"><span>Conductor</span> Inno<span>CR</span></h1>
-                <p class="eslogan">Tu próximo paso profesional empieza aquí</p>
+                <p class="eslogan">Tu próximo paso como conductor empieza aquí</p>
             </header>
 
             <div class="contenido">
-                <h2 class="titulo-seccion" style="text-align:center; margin-bottom:14px;">¿En qué te puedo ayudar hoy?
-                </h2>
+                <h2 class="titulo-pantalla" style="margin-bottom:14px;">¿En qué te puedo ayudar hoy?</h2>
 
                 <div class="tag-pago">
                     <i class="fa-solid fa-circle-check"></i>
                     Coordinamos todo por WhatsApp.
                 </div>
 
-                <div id="hub-productos" class="hub-contenido"></div>
+                <div id="hub-categorias"></div>
 
                 <div class="btn-dudas-wrapper">
-                    <button class="btn-dudas-whatsapp" data-ir-a="pantalla-info">
-                        <i class="fa-solid fa-circle-info"></i>
-                        Información útil para conductores
+                    <button class="btn-dudas-whatsapp"
+                        onclick="window.open(Utils.construirUrlWhatsApp(CONFIG.whatsapp.numero, 'Hola, tengo una consulta sobre los servicios de Conductor InnoCR.'), '_blank')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        ¿Tienes dudas? Escríbenos
                     </button>
                 </div>
             </div>
@@ -83,49 +78,7 @@
             </footer>
         </section>
 
-        <!-- ============================================
-             PANTALLA 2: INFO ÚTIL
-             ============================================ -->
-        <section id="pantalla-info" class="pantalla">
-            <header class="cabecera">
-                <button class="cabecera-volver" data-ir-a="pantalla-hub">
-                    <i class="fa-solid fa-arrow-left"></i> Volver
-                </button>
-                <h2 class="titulo-pantalla">Información útil</h2>
-            </header>
-
-            <div class="contenido">
-
-                <div class="seccion">
-                    <h3 class="titulo-seccion">
-                        Información sobre tipos de licencia
-                        <span class="tag-gratis">Gratis</span>
-                    </h3>
-                    <p class="ayuda-seccion">Tocá una licencia para ver su descripción.</p>
-                    <div id="info-licencias" class="licencias-grid"></div>
-                </div>
-
-                <div class="seccion">
-                    <h3 class="titulo-seccion">Tipos de placa</h3>
-                    <div id="info-placas" class="info-lista"></div>
-                </div>
-
-                <div class="seccion">
-                    <h3 class="titulo-seccion">
-                        Servicios gratuitos y enlaces oficiales
-                        <span class="tag-gratis">Gratis</span>
-                    </h3>
-                    <p class="ayuda-seccion">Estos enlaces te llevan a los sitios oficiales. InnoCR no gestiona estos
-                        trámites.</p>
-                    <div id="info-enlaces" class="enlaces-grid"></div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ============================================
-             PANTALLA 3: FORMULARIO
-             ============================================ -->
+        <!-- PANTALLA 2: FORMULARIO -->
         <section id="pantalla-formulario" class="pantalla">
             <header class="cabecera">
                 <button class="cabecera-volver" data-ir-a="pantalla-hub">
@@ -145,7 +98,7 @@
             </div>
         </section>
 
-        <!-- MODAL SELECCIÓN -->
+        <!-- MODAL SELECCIÓN / INFO -->
         <div id="modal-seleccion" class="modal-overlay">
             <div class="modal-contenido">
                 <h3 id="modal-seleccion-titulo">Seleccionar</h3>
