@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprendedor InnoCR | Servicios y Asesoría para Emprendedores en Costa Rica</title>
+
+    <meta property="og:title" content="Emprendedor InnoCR - Servicios y Asesoría para Emprendedores">
+    <meta property="og:description"
+        content="Facturación electrónica, tarjeta de presentación web, sitios web, asesoría SICOP y más. Todo coordinado por WhatsApp.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- PANTALLA 1: HUB -->
+        <section id="pantalla-hub" class="pantalla activa">
+            <header class="cabecera">
+                <h1 class="logo"><span>Emprendedor</span> Inno<span>CR</span></h1>
+                <p class="eslogan">Tu negocio empieza aquí</p>
+            </header>
+
+            <div class="contenido">
+                <h2 class="titulo-pantalla" style="margin-bottom:14px;">¿En qué te puedo ayudar hoy?</h2>
+
+                <div class="tag-pago">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Coordinamos todo por WhatsApp.
+                </div>
+
+                <div id="hub-categorias"></div>
+
+                <div class="btn-dudas-wrapper">
+                    <button class="btn-dudas-whatsapp"
+                        onclick="window.open(Utils.construirUrlWhatsApp(CONFIG.whatsapp.numero, 'Hola, tengo una consulta sobre los servicios de Emprendedor InnoCR.'), '_blank')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        ¿Tienes dudas? Escríbenos
+                    </button>
+                </div>
+            </div>
+
+            <footer class="footer-innocr">
+                <p class="footer-contacto">Contáctanos</p>
+
+                <div class="footer-redes">
+                    <a href="https://wa.me/50670373820" target="_blank" rel="noopener" title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.facebook.com/Innocr2018" target="_blank" rel="noopener" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/innocostarica" target="_blank" rel="noopener" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@InnoCostaRica" target="_blank" rel="noopener" title="YouTube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="#" onclick="abrirModalPrivacidad(); return false;" title="Política de Privacidad">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </a>
+                </div>
+
+                <p class="footer-legal">
+                    <a href="#" onclick="abrirModalCookies(); return false;">Política de Cookies</a>
+                </p>
+
+                <p class="footer-aviso" id="footer-aviso-legal"></p>
+
+                <p class="footer-copy">
+                    &copy; <span id="anio-actual"></span> Emprendedor InnoCR. Todos los derechos reservados.
+                </p>
+            </footer>
+        </section>
+
+        <!-- PANTALLA 2: FORMULARIO / INFO -->
+        <section id="pantalla-formulario" class="pantalla">
+            <header class="cabecera">
+                <button class="cabecera-volver" data-ir-a="pantalla-hub">
+                    <i class="fa-solid fa-arrow-left"></i> Volver
+                </button>
+                <h2 class="titulo-pantalla" id="form-titulo">Formulario</h2>
+                <div id="barra-progreso-wrapper" class="progreso" style="display:none; margin-top:12px;">
+                    <span class="paso-texto" id="paso-texto">Paso 1 de 3</span>
+                    <div class="barra-progreso">
+                        <div class="barra-progreso-fill" id="barra-progreso-fill" style="width: 33%;"></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="contenido">
+                <div id="form-campos"></div>
+            </div>
+        </section>
+
+        <!-- MODAL SELECCIÓN -->
+        <div id="modal-seleccion" class="modal-overlay">
+            <div class="modal-contenido">
+                <h3 id="modal-seleccion-titulo">Seleccionar</h3>
+                <div id="modal-seleccion-lista" class="modal-seleccion-lista"></div>
+                <div class="modal-botones">
+                    <button class="btn-cancelar" id="modal-seleccion-cancelar" type="button">Cancelar</button>
+                    <button class="btn-entendido" id="modal-seleccion-confirmar" type="button">Confirmar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL INFO (guías: Facturación, SICOP) -->
+        <div id="modal-info" class="modal-overlay">
+            <div class="modal-contenido" style="max-width:500px; text-align:left;">
+                <h3 id="modal-info-titulo" style="text-align:center;">Información</h3>
+                <p id="modal-info-texto"
+                    style="font-size:13px; white-space:pre-wrap; max-height:300px; overflow-y:auto; background:var(--fondo-suave); padding:15px; border-radius:8px; color:var(--texto-suave);">
+                </p>
+                <div class="modal-botones">
+                    <button class="btn-entendido" onclick="cerrarModalInfo()" type="button">Entendido</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL PRIVACIDAD -->
+        <div id="modal-privacidad" class="modal-overlay">
+            <div class="modal-contenido" style="max-width:500px; text-align:left;">
+                <h3 style="text-align:center;">Política de Privacidad</h3>
+                <p id="texto-privacidad"
+                    style="font-size:13px; white-space:pre-wrap; max-height:300px; overflow-y:auto; background:var(--fondo-suave); padding:15px; border-radius:8px; color:var(--texto-suave);">
+                </p>
+                <div class="modal-botones">
+                    <button class="btn-entendido" onclick="cerrarModalPrivacidad()" type="button">Entendido</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL COOKIES -->
+        <div id="modal-cookies" class="modal-overlay">
+            <div class="modal-contenido" style="max-width:500px; text-align:left;">
+                <h3 style="text-align:center;">Política de Cookies</h3>
+                <p id="texto-cookies"
+                    style="font-size:13px; white-space:pre-wrap; max-height:300px; overflow-y:auto; background:var(--fondo-suave); padding:15px; border-radius:8px; color:var(--texto-suave);">
+                </p>
+                <div class="modal-botones">
+                    <button class="btn-entendido" onclick="cerrarModalCookies()" type="button">Entendido</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BANNER COOKIES -->
+        <div id="cookie-banner" class="cookie-banner">
+            <div class="cookie-banner-contenido">
+                <p class="cookie-banner-texto">
+                    Usamos cookies analíticas de Google Analytics (a través de Google Tag Manager) para entender cómo
+                    se usa este sitio. Solo se activan si aceptas. Puedes aceptar o rechazar su uso.
+                    <a href="#" onclick="abrirModalCookies(); return false;">Más información</a>
+                </p>
+                <div class="cookie-banner-botones">
+                    <button class="cookie-btn cookie-btn-rechazar" onclick="rechazarCookies()"
+                        type="button">Rechazar</button>
+                    <button class="cookie-btn cookie-btn-aceptar" onclick="aceptarCookies()" type="button">Aceptar
+                        todo</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

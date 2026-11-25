@@ -18,6 +18,11 @@ const CONFIG = {
 
     avisoLegalFooter: "InnoCR es un servicio independiente de información y acompañamiento en trámites. No somos COSEVI ni una institución pública. Los costos oficiales de cada trámite se pagan aparte.",
 
+    analytics: {
+        gtm_id: "GTM-PHGKWSVQ",
+        ls_key_consent: "innocr_cookies_consent_v1"
+    },
+
     /* --------------------------------------------
        CATEGORÍAS DEL HUB
        tipo: "productos" | "info" | "enlaces"
@@ -347,7 +352,7 @@ const CONFIG = {
 
     textosLegales: {
         privacidad: "InnoCR es un servicio independiente de información y acompañamiento en trámites relacionados con COSEVI. No somos una institución pública ni representamos al COSEVI ni al MOPT.\n\nLos datos que ingresás en los formularios (nombre, cédula, selecciones) se envían por WhatsApp al número de contacto de InnoCR para coordinar el servicio que solicitás. No almacenamos tus datos en servidores propios; la conversación queda en WhatsApp.\n\nLos costos oficiales de cada trámite se pagan aparte y se te informan antes de cualquier pago. InnoCR cobra únicamente un costo de gestión por el acompañamiento y la facilitación del servicio.\n\nPara consultas sobre tus datos, escribinos al WhatsApp 50670373820.",
-        cookies: "Este sitio utiliza cookies únicamente para recordar tu preferencia sobre el banner de cookies (aceptar o rechazar). No usamos cookies de rastreo ni de publicidad de terceros en esta versión.\n\nSi aceptás, se podrían cargar herramientas de análisis (Google Tag Manager) en el futuro para entender cómo se usa el sitio. Si rechazás, no se carga ninguna herramienta de análisis.\n\nPodés cambiar tu preferencia en cualquier momento desde el enlace \"Política de Cookies\" en el pie de página."
+        cookies: "En InnoCR utilizamos cookies y tecnologías similares para analizar cómo navegas en nuestro sitio y mejorar tu experiencia.\n\n1. ¿Qué son las cookies? Son pequeños archivos que se almacenan en tu dispositivo cuando visitas un sitio web. Nos permiten recordar tus preferencias y entender cómo usas el sitio.\n\n2. Tipos de cookies que usamos:\n   • Cookies técnicas necesarias: permiten el funcionamiento básico del sitio y recordar tu decisión sobre este aviso. No requieren consentimiento.\n   • Cookies analíticas: usamos Google Analytics (a través de Google Tag Manager) para medir de forma anónima cuántas personas visitan el sitio, qué páginas ven y cómo navegan. Esta información nos ayuda a mejorar el contenido y la experiencia.\n\n3. Base legal: Tratamos cookies analíticas únicamente con tu consentimiento, conforme a la Ley N.° 8968 de Costa Rica.\n\n4. Control: Puedes aceptar o rechazar las cookies analíticas desde el aviso que aparece al entrar al sitio. Si las rechazas, no cargaremos Google Analytics y no se enviará información a Google. También puedes borrar las cookies desde la configuración de tu navegador en cualquier momento.\n\n5. Cambios: Si actualizamos esta política, lo indicaremos en este mismo sitio.\n\nSi tienes dudas, escríbenos a info@innocr.com."
     }
 
 };

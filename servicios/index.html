@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0F172A">
+    <meta name="description"
+        content="Conoce los servicios de InnoCR: soluciones para conductores, currículums profesionales y emprendedores en Costa Rica.">
+    <meta property="og:title" content="Servicios InnoCR | Soluciones para avanzar">
+    <meta property="og:description"
+        content="Encuentra el servicio de InnoCR que necesitas: conductor, currículum o emprendedor.">
+    <meta property="og:type" content="website">
+    <title>Servicios InnoCR | Soluciones para avanzar</title>
+
+    <style>
+        :root {
+            color-scheme: light;
+            --primario: #0F172A;
+            --secundario: #1E3A8A;
+            --acento: #F97316;
+            --acento-hover: #EA580C;
+            --fondo: #FFFFFF;
+            --fondo-suave: #F8FAFC;
+            --texto: #334155;
+            --texto-suave: #64748B;
+            --borde: #E2E8F0;
+            --sombra: 0 12px 32px rgba(15, 23, 42, .08);
+            --radio: 18px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--texto);
+            background: var(--fondo-suave);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .pagina {
+            width: min(100% - 40px, 1120px);
+            margin: 0 auto;
+        }
+
+        .barra-navegacion {
+            display: flex;
+            min-height: 76px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .marca {
+            color: var(--primario);
+            font-size: 24px;
+            font-weight: 850;
+            letter-spacing: -.8px;
+            text-decoration: none;
+        }
+
+        .marca span {
+            color: var(--acento);
+        }
+
+        .enlace-contacto {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--secundario);
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .enlace-contacto:hover {
+            color: var(--acento-hover);
+        }
+
+        .enlace-contacto svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(42px, 8vw, 82px) 28px;
+            border-radius: 24px;
+            color: #fff;
+            background:
+                radial-gradient(ellipse at 92% 10%, rgba(249, 115, 22, .30), transparent 34%),
+                linear-gradient(125deg, #0F172A, #1E3A8A);
+            text-align: center;
+        }
+
+        .hero::after {
+            position: absolute;
+            right: -74px;
+            bottom: -156px;
+            width: 310px;
+            height: 310px;
+            border: 1px solid rgba(255, 255, 255, .13);
+            border-radius: 50%;
+            content: "";
+            pointer-events: none;
+        }
+
+        .hero-contenido {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .etiqueta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, .23);
+            border-radius: 999px;
+            color: #FFEDD5;
+            background: rgba(255, 255, 255, .08);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .etiqueta svg {
+            width: 15px;
+            height: 15px;
+            color: #FDBA74;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(34px, 6vw, 54px);
+            font-weight: 800;
+            letter-spacing: -1.7px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            max-width: 570px;
+            margin: 17px auto 0;
+            color: #E2E8F0;
+            font-size: clamp(16px, 2.5vw, 18px);
+        }
+
+        .servicios {
+            padding: 54px 0 62px;
+        }
+
+        .encabezado-servicios {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .encabezado-servicios h2 {
+            margin: 0;
+            color: var(--primario);
+            font-size: clamp(23px, 4vw, 30px);
+            font-weight: 800;
+            letter-spacing: -.7px;
+        }
+
+        .encabezado-servicios p {
+            margin: 7px 0 0;
+            color: var(--texto-suave);
+        }
+
+        .rejilla-servicios {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .tarjeta-servicio {
+            display: flex;
+            min-height: 290px;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 26px;
+            border: 1px solid var(--borde);
+            border-radius: var(--radio);
+            background: var(--fondo);
+            box-shadow: var(--sombra);
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+
+        .tarjeta-servicio:hover {
+            transform: translateY(-5px);
+            border-color: #FDBA74;
+            box-shadow: 0 18px 38px rgba(15, 23, 42, .13);
+        }
+
+        .tarjeta-servicio:focus-visible,
+        .enlace-contacto:focus-visible,
+        .redes a:focus-visible {
+            outline: 3px solid var(--acento);
+            outline-offset: 4px;
+        }
+
+        .icono {
+            display: grid;
+            width: 52px;
+            height: 52px;
+            place-items: center;
+            border-radius: 15px;
+            color: var(--secundario);
+            background: #EFF6FF;
+        }
+
+        .tarjeta-servicio:nth-child(2) .icono {
+            color: #C2410C;
+            background: #FFF7ED;
+        }
+
+        .tarjeta-servicio:nth-child(3) .icono {
+            color: #047857;
+            background: #ECFDF5;
+        }
+
+        .icono svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .tarjeta-servicio h3 {
+            margin: 20px 0 7px;
+            color: var(--primario);
+            font-size: 20px;
+            font-weight: 750;
+            letter-spacing: -.35px;
+        }
+
+        .tarjeta-servicio p {
+            margin: 0;
+            color: var(--texto-suave);
+            font-size: 14px;
+        }
+
+        .tarjeta-accion {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: auto;
+            padding-top: 21px;
+            color: var(--secundario);
+            font-size: 14px;
+            font-weight: 750;
+        }
+
+        .tarjeta-accion svg {
+            width: 17px;
+            height: 17px;
+            transition: transform .2s ease;
+        }
+
+        .tarjeta-servicio:hover .tarjeta-accion svg {
+            transform: translateX(4px);
+        }
+
+        .franja-contacto {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 52px;
+            padding: 24px 28px;
+            border: 1px solid var(--borde);
+            border-radius: var(--radio);
+            background: var(--fondo);
+        }
+
+        .franja-contacto h2 {
+            margin: 0;
+            color: var(--primario);
+            font-size: 18px;
+        }
+
+        .franja-contacto p {
+            margin: 3px 0 0;
+            color: var(--texto-suave);
+            font-size: 14px;
+        }
+
+        .boton-whatsapp {
+            display: inline-flex;
+            min-height: 46px;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0 18px;
+            border-radius: 10px;
+            color: #fff;
+            background: #15803D;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background .2s ease;
+        }
+
+        .boton-whatsapp:hover {
+            background: #166534;
+        }
+
+        .boton-whatsapp:focus-visible {
+            outline: 3px solid var(--primario);
+            outline-offset: 3px;
+        }
+
+        .boton-whatsapp svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        footer {
+            padding: 24px 0 30px;
+            border-top: 1px solid var(--borde);
+            color: var(--texto-suave);
+            text-align: center;
+        }
+
+        .redes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 13px;
+        }
+
+        .redes a {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border: 1px solid var(--borde);
+            border-radius: 50%;
+            color: var(--secundario);
+            background: var(--fondo);
+            text-decoration: none;
+            transition: color .2s ease, background .2s ease, border-color .2s ease;
+        }
+
+        .redes a:hover {
+            border-color: var(--secundario);
+            color: #fff;
+            background: var(--secundario);
+        }
+
+        .redes svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .copyright {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .enlace-cookies {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: var(--texto-suave);
+            font-size: 12px;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .enlace-cookies:hover {
+            color: var(--secundario);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            z-index: 20;
+            right: 16px;
+            bottom: 16px;
+            left: 16px;
+            width: min(100% - 32px, 720px);
+            margin: 0 auto;
+            padding: 18px 20px;
+            border: 1px solid var(--borde);
+            border-radius: 14px;
+            background: var(--fondo);
+            box-shadow: 0 16px 48px rgba(15, 23, 42, .2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+        }
+
+        .cookie-banner.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .cookie-banner p {
+            margin: 0;
+            color: var(--texto);
+            font-size: 14px;
+        }
+
+        .cookie-banner a {
+            color: var(--secundario);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .cookie-banner-botones {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .cookie-banner-botones button,
+        .modal-cookies-cerrar {
+            min-height: 40px;
+            padding: 8px 15px;
+            border: 1px solid var(--borde);
+            border-radius: 9px;
+            color: var(--texto);
+            background: var(--fondo);
+            font: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .cookie-banner-botones button:hover,
+        .modal-cookies-cerrar:hover {
+            background: var(--fondo-suave);
+        }
+
+        .cookie-banner-botones .cookie-btn-aceptar {
+            border-color: var(--secundario);
+            color: #fff;
+            background: var(--secundario);
+        }
+
+        .cookie-banner-botones .cookie-btn-aceptar:hover {
+            background: #172554;
+        }
+
+        .cookie-banner-botones button:focus-visible,
+        .modal-cookies-cerrar:focus-visible,
+        .enlace-cookies:focus-visible {
+            outline: 3px solid var(--acento);
+            outline-offset: 3px;
+        }
+
+        .modal-cookies {
+            position: fixed;
+            z-index: 30;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(15, 23, 42, .65);
+        }
+
+        .modal-cookies.activo {
+            display: flex;
+        }
+
+        .modal-cookies-contenido {
+            width: min(100%, 540px);
+            max-height: min(80vh, 620px);
+            overflow-y: auto;
+            padding: 24px;
+            border-radius: 16px;
+            background: var(--fondo);
+            box-shadow: 0 20px 60px rgba(15, 23, 42, .25);
+        }
+
+        .modal-cookies-contenido h2 {
+            margin: 0 0 14px;
+            color: var(--primario);
+            font-size: 22px;
+        }
+
+        .modal-cookies-contenido p,
+        .modal-cookies-contenido li {
+            color: var(--texto-suave);
+            font-size: 14px;
+        }
+
+        .modal-cookies-contenido p {
+            margin: 0 0 12px;
+        }
+
+        .modal-cookies-contenido ul {
+            padding-left: 22px;
+        }
+
+        .modal-cookies-cerrar {
+            display: block;
+            min-width: 110px;
+            margin: 18px 0 0 auto;
+            border-color: var(--secundario);
+            color: #fff;
+            background: var(--secundario);
+        }
+
+        @media (max-width: 760px) {
+            .rejilla-servicios {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .tarjeta-servicio {
+                min-height: 0;
+                padding: 22px;
+            }
+
+            .tarjeta-accion {
+                padding-top: 16px;
+            }
+
+            .servicios {
+                padding: 42px 0 48px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .pagina {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .barra-navegacion {
+                min-height: 66px;
+            }
+
+            .marca {
+                font-size: 21px;
+            }
+
+            .enlace-contacto {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 43px 20px;
+                border-radius: 18px;
+            }
+
+            .franja-contacto {
+                align-items: flex-start;
+                flex-direction: column;
+                margin-bottom: 38px;
+                padding: 21px;
+            }
+
+            .boton-whatsapp {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="pagina barra-navegacion">
+        <a class="marca" href="#inicio" aria-label="InnoCR, inicio">Inno<span>CR</span></a>
+        <a class="enlace-contacto" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path
+                    d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z" />
+            </svg>
+            Contáctanos
+        </a>
+    </header>
+
+    <main>
+        <section class="pagina hero" id="inicio" aria-labelledby="titulo-principal">
+            <div class="hero-contenido">
+                <span class="etiqueta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 3v18M3 12h18" />
+                    </svg>
+                    Servicios InnoCR
+                </span>
+                <h1 id="titulo-principal">Soluciones para avanzar</h1>
+                <p>Elige el área que necesitas y encuentra el apoyo adecuado para tu próximo paso.</p>
+            </div>
+        </section>
+
+        <section class="pagina servicios" id="servicios" aria-labelledby="titulo-servicios">
+            <div class="encabezado-servicios">
+                <h2 id="titulo-servicios">¿En qué podemos ayudarte?</h2>
+                <p>Explora nuestros servicios y comienza cuando estés listo.</p>
+            </div>
+
+            <div class="rejilla-servicios">
+                <a class="tarjeta-servicio" href="emprendedor/index.html">
+                    <span class="icono">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 21h18M5 21V7l8-4v18m0-12h6v12M8 9v.01M8 12v.01M8 15v.01m6-1h2m-2 3h2" />
+                        </svg>
+                    </span>
+                    <h3>Emprendedor</h3>
+                    <p>Herramientas y asesoría para impulsar tu negocio, desde facturación hasta presencia web.</p>
+                    <span class="tarjeta-accion">
+                        Impulsar mi negocio
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14m-7-7 7 7-7 7" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a class="tarjeta-servicio" href="conductor/index.html">
+                    <span class="icono">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 17h14l1-5-2-5H6l-2 5 1 5Z" />
+                            <path d="M4 12h16M7 17v2m10-2v2M7 7l1-3h8l1 3" />
+                            <circle cx="7.5" cy="14.5" r="1" />
+                            <circle cx="16.5" cy="14.5" r="1" />
+                        </svg>
+                    </span>
+                    <h3>Conductor</h3>
+                    <p>Trámites y servicios para conductores en Costa Rica, coordinados de forma sencilla.</p>
+                    <span class="tarjeta-accion">
+                        Explorar servicios
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14m-7-7 7 7-7 7" />
+                        </svg>
+                    </span>
+                </a>
+
+                <a class="tarjeta-servicio" href="curriculum/index.html">
+                    <span class="icono">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+                            <path d="M14 2v6h6M8 13h8m-8 4h8" />
+                        </svg>
+                    </span>
+                    <h3>Currículum</h3>
+                    <p>Prepara tu currículum profesional o una carta de recomendación lista para compartir.</p>
+                    <span class="tarjeta-accion">
+                        Crear documentos
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14m-7-7 7 7-7 7" />
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <section class="pagina franja-contacto" id="contacto" aria-labelledby="titulo-contacto">
+            <div>
+                <h2 id="titulo-contacto">¿Tienes dudas?</h2>
+                <p>Escríbenos por WhatsApp; con gusto te orientamos.</p>
+            </div>
+            <a class="boton-whatsapp" href="https://wa.me/50670373820" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .1 5.4.1 12c0 2.1.6 4.1 1.6 5.9L0 24l6.3-1.6a12 12 0 0 0 5.8 1.5h.1c6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.7-8.4ZM12.1 22a10 10 0 0 1-5.1-1.4l-.4-.2-3.8 1 1-3.7-.3-.4A9.9 9.9 0 0 1 2 12C2 6.5 6.5 2 12.1 2c2.7 0 5.2 1.1 7.1 2.9A9.9 9.9 0 0 1 22 12c0 5.5-4.5 10-9.9 10Zm5.5-7.5c-.3-.1-1.6-.8-1.9-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.5-.9-2-.2-.5-.5-.4-.7-.4H8c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.2-1.3-.1-.2-.3-.3-.6-.4Z" />
+                </svg>
+                Escribir por WhatsApp
+            </a>
+        </section>
+    </main>
+
+    <footer class="pagina">
+        <nav class="redes" aria-label="Redes sociales de InnoCR">
+            <a href="https://www.facebook.com/Innocr2018" target="_blank" rel="noopener noreferrer"
+                aria-label="Facebook de InnoCR">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v1.9H7V13h2.8v8h3.7Z" />
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/innocostarica" target="_blank" rel="noopener noreferrer"
+                aria-label="Instagram de InnoCR">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M17.5 6.5h.01" />
+                </svg>
+            </a>
+            <a href="https://www.youtube.com/@InnoCostaRica" target="_blank" rel="noopener noreferrer"
+                aria-label="YouTube de InnoCR">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
+                </svg>
+            </a>
+        </nav>
+        <a class="enlace-cookies" href="#politica-cookies" id="abrir-modal-cookies">Política de Cookies</a>
+        <p class="copyright">&copy; <span id="anio-actual"></span> InnoCR. Todos los derechos reservados.</p>
+    </footer>
+
+    <section class="cookie-banner" id="cookie-banner" role="region" aria-label="Preferencias de cookies"
+        aria-hidden="true">
+        <p>
+            Usamos cookies analíticas de Google Analytics, a través de Google Tag Manager, para entender cómo se usa
+            este sitio. Solo se activan si aceptas.
+            <a href="#politica-cookies" id="ver-politica-cookies">Más información</a>
+        </p>
+        <div class="cookie-banner-botones">
+            <button class="cookie-btn-rechazar" id="rechazar-cookies" type="button">Rechazar</button>
+            <button class="cookie-btn-aceptar" id="aceptar-cookies" type="button">Aceptar todo</button>
+        </div>
+    </section>
+
+    <div class="modal-cookies" id="modal-cookies" aria-hidden="true">
+        <section class="modal-cookies-contenido" role="dialog" aria-modal="true"
+            aria-labelledby="titulo-politica-cookies" tabindex="-1">
+            <h2 id="titulo-politica-cookies">Política de Cookies</h2>
+            <p>En InnoCR utilizamos cookies y tecnologías similares para analizar cómo navegas en nuestro sitio y
+                mejorar tu experiencia.</p>
+            <ul>
+                <li>Las cookies técnicas necesarias permiten el funcionamiento básico del sitio y recordar tu decisión.</li>
+                <li>Las cookies analíticas de Google Analytics, a través de Google Tag Manager, nos ayudan a medir las
+                    visitas y mejorar el contenido.</li>
+                <li>Las cookies analíticas solo se activan con tu consentimiento. Si las rechazas, Google Tag Manager
+                    no se carga ni se envía información a Google.</li>
+            </ul>
+            <p>Si rechazas las cookies analíticas, Google Tag Manager no se carga. Puedes consultar esta política
+                desde el enlace al pie de la página y borrar las cookies desde la configuración de tu navegador.</p>
+            <button class="modal-cookies-cerrar" id="cerrar-modal-cookies" type="button">Entendido</button>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById("anio-actual").textContent = new Date().getFullYear();
+
+        const GTM_ID = "GTM-PHGKWSVQ";
+        const CONSENT_KEY = "innocr_cookies_consent_v1";
+        const CONSENT_GRANTED = "granted";
+        const CONSENT_DENIED = "denied";
+        const cookieBanner = document.getElementById("cookie-banner");
+        const cookieModal = document.getElementById("modal-cookies");
+        const cookieModalContent = cookieModal.querySelector(".modal-cookies-contenido");
+        let previousFocus = null;
+
+        function getConsentDecision() {
+            try {
+                const consent = JSON.parse(localStorage.getItem(CONSENT_KEY));
+                return consent && (consent.decision === CONSENT_GRANTED || consent.decision === CONSENT_DENIED)
+                    ? consent.decision
+                    : null;
+            } catch (error) {
+                console.warn("No se pudo leer la decisión de cookies:", error);
+                return null;
+            }
+        }
+
+        function saveConsentDecision(decision) {
+            try {
+                localStorage.setItem(CONSENT_KEY, JSON.stringify({
+                    decision: decision,
+                    timestamp: Date.now()
+                }));
+            } catch (error) {
+                console.warn("No se pudo guardar la decisión de cookies:", error);
+            }
+        }
+
+        function loadGoogleTagManager() {
+            if (document.getElementById("gtm-script")) return;
+
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () {
+                window.dataLayer.push(arguments);
+            };
+            window.gtag("js", new Date());
+            window.gtag("consent", "update", {
+                analytics_storage: "granted"
+            });
+
+            const script = document.createElement("script");
+            script.id = "gtm-script";
+            script.async = true;
+            script.src = "https://www.googletagmanager.com/gtm.js?id=" + GTM_ID;
+            document.head.appendChild(script);
+        }
+
+        function hideCookieBanner() {
+            cookieBanner.classList.remove("visible");
+            cookieBanner.setAttribute("aria-hidden", "true");
+        }
+
+        function showCookieBanner() {
+            if (getConsentDecision() !== null) return;
+
+            window.setTimeout(function () {
+                cookieBanner.classList.add("visible");
+                cookieBanner.setAttribute("aria-hidden", "false");
+            }, 300);
+        }
+
+        function acceptCookies() {
+            saveConsentDecision(CONSENT_GRANTED);
+            hideCookieBanner();
+            loadGoogleTagManager();
+            window.setTimeout(function () {
+                window.location.reload();
+            }, 200);
+        }
+
+        function rejectCookies() {
+            saveConsentDecision(CONSENT_DENIED);
+            hideCookieBanner();
+        }
+
+        function openCookiePolicy(event) {
+            if (event) event.preventDefault();
+            previousFocus = document.activeElement;
+            cookieModal.classList.add("activo");
+            cookieModal.setAttribute("aria-hidden", "false");
+            cookieModalContent.focus();
+        }
+
+        function closeCookiePolicy() {
+            cookieModal.classList.remove("activo");
+            cookieModal.setAttribute("aria-hidden", "true");
+            if (previousFocus) previousFocus.focus();
+        }
+
+        document.getElementById("aceptar-cookies").addEventListener("click", acceptCookies);
+        document.getElementById("rechazar-cookies").addEventListener("click", rejectCookies);
+        document.getElementById("abrir-modal-cookies").addEventListener("click", openCookiePolicy);
+        document.getElementById("ver-politica-cookies").addEventListener("click", openCookiePolicy);
+        document.getElementById("cerrar-modal-cookies").addEventListener("click", closeCookiePolicy);
+
+        cookieModal.addEventListener("click", function (event) {
+            if (event.target === cookieModal) closeCookiePolicy();
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && cookieModal.classList.contains("activo")) {
+                closeCookiePolicy();
+            }
+        });
+
+        const savedConsent = getConsentDecision();
+        if (savedConsent === CONSENT_GRANTED) {
+            loadGoogleTagManager();
+        } else if (savedConsent === null) {
+            showCookieBanner();
+        }
+    </script>
+</body>
+
+</html>
