@@ -8,8 +8,7 @@
     <meta name="description"
         content="Crea enlaces personalizados de WhatsApp con tu número y un mensaje listo para compartir.">
     <meta property="og:title" content="Enlaces de WhatsApp | InnoCR">
-    <meta property="og:description"
-        content="Genera, copia y comparte un enlace de WhatsApp con mensaje precargado.">
+    <meta property="og:description" content="Genera, copia y comparte un enlace de WhatsApp con mensaje precargado.">
     <meta property="og:type" content="website">
     <title>Crear enlace de WhatsApp | InnoCR</title>
 
@@ -373,7 +372,7 @@
             font-size: 19px;
         }
 
-        .resultado > p {
+        .resultado>p {
             margin: 4px 0 13px;
             color: var(--texto-suave);
             font-size: 14px;
@@ -658,6 +657,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -670,22 +670,22 @@
 
 <body>
     <header class="pagina barra-navegacion">
-        <a class="marca" href="../servicios/index.html" aria-label="InnoCR, servicios">Inno<span>CR</span></a>
-        <a class="volver" href="../servicios/index.html">← Servicios InnoCR</a>
+        <a class="marca" href="/servicios/index.html" aria-label="InnoCR, servicios">Inno<span>CR</span></a>
+        <!-- <a class="volver" href="/servicios/index.html">← Servicios InnoCR</a> -->
     </header>
 
     <section class="pagina hero" aria-labelledby="titulo-principal">
         <div class="hero-contenido">
             <span class="etiqueta">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
                     <path d="M10 13a5 5 0 0 0 7.07 0l3-3A5 5 0 0 0 13 2.93l-1.72 1.71" />
                     <path d="M14 11a5 5 0 0 0-7.07 0l-3 3A5 5 0 0 0 11 21.07l1.71-1.71" />
                 </svg>
                 Herramienta gratuita
             </span>
             <h1 id="titulo-principal">Crea tu enlace de WhatsApp</h1>
-            <p>Comparte tu número y permite que te escriban con un mensaje listo para enviar.</p>
+            <p>Comparte tu número junto con un mensaje precargado listo para enviar</p>
         </div>
     </section>
 
@@ -693,7 +693,6 @@
         <section class="tarjeta" aria-labelledby="titulo-formulario">
             <div class="encabezado-formulario">
                 <h2 id="titulo-formulario">Configura tu enlace</h2>
-                <p>Ingresa el número con código de país. El mensaje es opcional.</p>
             </div>
 
             <form id="form-enlace" novalidate>
@@ -735,8 +734,7 @@
                                 aria-label="Aplicar monoespaciado" title="Monoespaciado"><code>&lt;/&gt;</code></button>
                         </div>
                         <textarea class="campo-mensaje" id="mensaje" name="mensaje"
-                            placeholder="Hola, quisiera más información..."
-                            aria-describedby="ayuda-mensaje"></textarea>
+                            placeholder="Hola, quisiera más información..." aria-describedby="ayuda-mensaje"></textarea>
                     </div>
                     <p class="ayuda" id="ayuda-mensaje">Selecciona texto y aplica un formato. Si no seleccionas nada,
                         se insertará texto de ejemplo para reemplazar. Los saltos de línea se conservan; quien reciba
@@ -745,8 +743,8 @@
 
                 <button class="boton boton-crear" type="submit">
                     Crear enlace
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
                         <path d="M5 12h14m-7-7 7 7-7 7" />
                     </svg>
                 </button>
@@ -757,14 +755,14 @@
                 <p>Compártelo donde quieras para que te contacten por WhatsApp.</p>
                 <a class="url-generada" id="url-generada" href="#" target="_blank" rel="noopener noreferrer"></a>
                 <div class="acciones-resultado">
-                    <button class="boton boton-secundario" id="copiar-enlace" type="button">
-                        Copiar enlace
-                    </button>
                     <button class="boton boton-secundario" id="compartir-enlace" type="button">
                         Compartir
                     </button>
+                    <button class="boton boton-secundario" id="copiar-enlace" type="button">
+                        Copiar enlace
+                    </button>
                     <a class="boton boton-whatsapp" id="probar-enlace" href="#" target="_blank"
-                        rel="noopener noreferrer">Abrir WhatsApp</a>
+                        rel="noopener noreferrer">Probar enlace</a>
                 </div>
                 <p class="estado" id="estado-enlace" role="status" aria-live="polite"></p>
             </section>
@@ -772,8 +770,8 @@
 
         <aside class="atajo" aria-labelledby="titulo-atajo">
             <div>
-                <h2 id="titulo-atajo">¿Quieres acceder más rápido desde tu teléfono?</h2>
-                <p>Puedes agregar un acceso directo desde las opciones de tu navegador.</p>
+                <h2 id="titulo-atajo">¿Quieres tener a mano este sitio web?</h2>
+                <p>Puedes crear un acceso directo desde las opciones de tu navegador.</p>
             </div>
             <button class="instalar-atajo" id="abrir-modal-atajo" type="button">Ver cómo hacerlo</button>
         </aside>
@@ -798,32 +796,30 @@
     </section>
 
     <div class="modal" id="modal-cookies" aria-hidden="true">
-        <section class="modal-contenido" role="dialog" aria-modal="true"
-            aria-labelledby="titulo-politica-cookies" tabindex="-1">
+        <section class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="titulo-politica-cookies"
+            tabindex="-1">
             <h2 id="titulo-politica-cookies">Política de Cookies</h2>
             <p>En InnoCR utilizamos cookies y tecnologías similares para analizar cómo navegas en nuestro sitio y
                 mejorar tu experiencia.</p>
             <ul>
-                <li>Las cookies técnicas necesarias permiten el funcionamiento básico del sitio y recordar tu decisión.</li>
-                <li>Las cookies analíticas de Google Analytics, a través de Google Tag Manager, nos ayudan a medir las
-                    visitas y mejorar el contenido.</li>
-                <li>Las cookies analíticas solo se activan con tu consentimiento. Si las rechazas, Google Tag Manager
-                    no se carga ni se envía información a Google.</li>
+                <li>Las cookies técnicas necesarias permiten el funcionamiento básico del sitio y recordar tu decisión.
+                </li>
+                <li>Las cookies analíticas de Google, nos ayudan a medir las visitas y mejorar el contenido.</li>
+                <li>Las cookies analíticas solo se activan con tu consentimiento. Si las rechazas, no se carga ni se envía información a Google.</li>
             </ul>
             <button class="modal-boton modal-boton-primario" id="cerrar-modal-cookies" type="button">Entendido</button>
         </section>
     </div>
 
     <div class="modal" id="modal-atajo" aria-hidden="true">
-        <section class="modal-contenido" role="dialog" aria-modal="true"
-            aria-labelledby="titulo-modal-atajo" tabindex="-1">
-            <h2 id="titulo-modal-atajo">Agrega un acceso directo</h2>
-            <p><strong>iPhone o iPad:</strong> abre esta página en Safari, toca el botón Compartir y selecciona
-                «Añadir a pantalla de inicio».</p>
+        <section class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-atajo"
+            tabindex="-1">
+            <h2 id="titulo-modal-atajo">Crear un acceso directo</h2>
             <p><strong>Android:</strong> abre el menú del navegador (⋮) y selecciona «Añadir a pantalla principal»
                 o «Crear acceso directo».</p>
-            <p>Esto crea un acceso directo a esta página desde tu pantalla de inicio; no instala una aplicación ni
-                requiere una PWA.</p>
+            <p><strong>iPhone o iPad:</strong> abre esta página en Safari, toca el botón Compartir y selecciona
+                «Añadir a pantalla de inicio».</p>
+            <p>Esto crea un acceso directo a esta página desde tu pantalla de inicio.</p>
             <button class="modal-boton modal-boton-primario" id="cerrar-modal-atajo" type="button">Entendido</button>
         </section>
     </div>
