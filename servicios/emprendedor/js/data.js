@@ -43,7 +43,7 @@ const CONFIG = {
                     id: 1,
                     titulo: "Asesoría Contable",
                     descripcion: "Te orientamos con la contabilidad, obligaciones tributarias y la administración financiera de tu nuevo negocio.",
-                    tag: "Cotización mensual",
+                    tag: "Lo que no se mide, no se mejora",
                     icono: "fa-solid fa-calculator",
                     activo: true,
                     modo: "formulario",
@@ -69,14 +69,13 @@ const CONFIG = {
                             ]
                         },
                         { id: 3, clave: "nombre", tipo: "text", label: "Nombre completo", requerido: true, placeholder: "Tu nombre" },
-                        { id: 4, clave: "whatsapp", tipo: "text", label: "WhatsApp", requerido: true, placeholder: "Ej: 50688888888" },
                         {
-                            id: 5, clave: "legal", tipo: "checkbox-legal",
+                            id: 4, clave: "legal", tipo: "checkbox-legal",
                             label: "Entiendo que el servicio contable se cotiza según las necesidades y operaciones de mi negocio y que los costos oficiales se pagan aparte.",
                             requerido: true
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero cotizar Asesoría Contable. Situación del negocio: {situacionContable}. Tipo de servicio: {tipoServicio}. Mi nombre es {nombre} y mi WhatsApp es {whatsapp}. Quiero que me indiquen el costo mensual."
+                    mensajeWhatsApp: "¡Hola! Me llamo {nombre} y quiero consultar por el servicio de Asesoría Contable.\n\nLa situación actual de mi negocio es: {situacionContable}\nServicio que me interesa: {tipoServicio}\n\n¿Me podrían indicar el costo mensual y cómo podríamos empezar?"
                 },
 
                 // ---------- DISEÑO DE MARCA ----------
@@ -84,26 +83,50 @@ const CONFIG = {
                     id: 2,
                     titulo: "Diseño de Marca",
                     descripcion: "Creamos la identidad visual de tu marca: logo, colores y tipografía.",
-                    tag: "Complementario",
+                    tag: "El logo es el rostro de tú negocio",
                     icono: "fa-solid fa-palette",
                     activo: true,
-                    modo: "solo-info",
+                    modo: "formulario",
                     campos: [
                         {
-                            id: 1, clave: "legal", tipo: "checkbox-legal",
+                            id: 1, clave: "nombreNegocio", tipo: "text",
+                            label: "Nombre del negocio o proyecto",
+                            requerido: true,
+                            placeholder: "Ej: Panadería La Esquina"
+                        },
+                        {
+                            id: 2, clave: "descripcionNegocio", tipo: "text",
+                            label: "¿Qué hace tu negocio?",
+                            requerido: true,
+                            placeholder: "Ej: Vendemos pan artesanal y productos horneados"
+                        },
+                        {
+                            id: 3, clave: "necesidadMarca", tipo: "text",
+                            label: "¿Qué necesitás para tu marca?",
+                            requerido: true,
+                            placeholder: "Ej: Logo, colores, tipografía, manual de marca..."
+                        },
+                        {
+                            id: 4, clave: "detallesMarca", tipo: "text",
+                            label: "Detalles adicionales (opcional)",
+                            requerido: false,
+                            placeholder: "Ej: estilo moderno, colores preferidos, referencias..."
+                        },
+                        {
+                            id: 5, clave: "legal", tipo: "checkbox-legal",
                             label: "Entiendo que InnoCR cotiza el diseño de marca según la complejidad de la marca y que el precio final se confirma por WhatsApp.",
                             requerido: true
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero diseño de marca para mi negocio. Mi negocio se llama [X] y se dedica a [Y]. Quiero que me coticen."
+                    mensajeWhatsApp: "¡Hola! Quiero solicitar una cotización para Diseño de Marca.\n\nNegocio o proyecto: {nombreNegocio}\nDescripción del negocio: {descripcionNegocio}\nLo que necesito: {necesidadMarca}\nDetalles adicionales: {detallesMarca}\n\n¿Me pueden ayudar a cotizar el paquete que mejor se adapte?"
                 },
 
                 // ---------- TARJETA DE PRESENTACIÓN WEB ----------
                 {
                     id: 3,
                     titulo: "Tarjeta de Presentación Web",
-                    descripcion: "Tu negocio en una página web con URL propia y código QR. Incluye ubicación, redes y contacto.",
-                    tag: "₡9.000 / año",
+                    descripcion: "Presenta la información de contacto para tu negocio por medio de un código QR y una pagina web.",
+                    tag: "Costo anual",
                     icono: "fa-solid fa-address-card",
                     activo: true,
                     modo: "formulario",
@@ -123,24 +146,23 @@ const CONFIG = {
                         {
                             titulo: "Contacto y redes",
                             campos: [
-                                { id: 5, clave: "whatsappNegocio", tipo: "text", label: "Número de WhatsApp", requerido: true, placeholder: "Ej: 50688888888" },
-                                { id: 6, clave: "correoNegocio", tipo: "text", label: "Correo electrónico", requerido: true, placeholder: "Ej: contacto@minegocio.com" },
-                                { id: 7, clave: "redesSociales", tipo: "text", label: "Redes sociales (separadas por coma)", requerido: false, placeholder: "Ej: facebook.com/minegocio, instagram.com/minegocio" },
-                                { id: 8, clave: "sitioWebExistente", tipo: "text", label: "Sitio web existente (opcional)", requerido: false, placeholder: "Ej: www.minegocio.com" }
+                                { id: 5, clave: "correoNegocio", tipo: "text", label: "Correo electrónico", requerido: true, placeholder: "Ej: contacto@minegocio.com" },
+                                { id: 6, clave: "redesSociales", tipo: "text", label: "Redes sociales (separadas por coma)", requerido: false, placeholder: "Ej: facebook.com/minegocio, instagram.com/minegocio" },
+                                { id: 7, clave: "sitioWebExistente", tipo: "text", label: "Sitio web existente (opcional)", requerido: false, placeholder: "Ej: www.minegocio.com" }
                             ]
                         },
                         {
                             titulo: "Confirmación",
                             campos: [
                                 {
-                                    id: 9, clave: "legal", tipo: "checkbox-legal",
-                                    label: "Autorizo a InnoCR a usar estos datos para crear mi tarjeta de presentación web y contactarme por WhatsApp. Entiendo que mis datos se guardan en Google Sheets y que el enlace se activa una vez confirmado el pago de ₡9.000.",
+                                    id: 8, clave: "legal", tipo: "checkbox-legal",
+                                    label: "Autorizo a InnoCR a usar estos datos para crear mi tarjeta de presentación web y contactarme por WhatsApp.",
                                     requerido: true
                                 }
                             ]
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero mi tarjeta de presentación web. Mi negocio se llama {nombreNegocio}, está en {ubicacion}. Mi WhatsApp es {whatsappNegocio} y mi correo es {correoNegocio}. Entiendo que el costo es ₡9.000 anuales y que el enlace se activa tras confirmar el pago."
+                    mensajeWhatsApp: "¡Hola! Quiero solicitar la Tarjeta de Presentación Web anual.\n\nDatos del negocio:\n• Nombre: {nombreNegocio}\n• Eslogan: {eslogan}\n• Ubicación: {ubicacion}\n• Descripción: {descripcionNegocio}\n\nContacto y redes:\n• Correo electrónico: {correoNegocio}\n• Redes sociales: {redesSociales}\n• Sitio web existente: {sitioWebExistente}\n\nMe gustaría confirmar estos datos y continuar con el pago de ₡9.000."
                 },
 
                 // ---------- SITIO WEB ----------
@@ -191,36 +213,64 @@ const CONFIG = {
                             titulo: "Tus datos",
                             campos: [
                                 { id: 6, clave: "nombre", tipo: "text", label: "Nombre completo", requerido: true, placeholder: "Tu nombre" },
-                                { id: 7, clave: "whatsapp", tipo: "text", label: "WhatsApp", requerido: true, placeholder: "Ej: 50688888888" },
-                                { id: 8, clave: "correo", tipo: "text", label: "Correo electrónico", requerido: true, placeholder: "Ej: tu@correo.com" },
+                                { id: 7, clave: "correo", tipo: "text", label: "Correo electrónico", requerido: true, placeholder: "Ej: tu@correo.com" },
                                 {
-                                    id: 9, clave: "legal", tipo: "checkbox-legal",
+                                    id: 8, clave: "legal", tipo: "checkbox-legal",
                                     label: "Entiendo que InnoCR es un equipo de ingenieros en TI y que el precio final se cotiza según los detalles de mi proyecto.",
                                     requerido: true
                                 }
                             ]
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero cotizar un sitio web. Tipo de proyecto: {tipoProyecto}. Dominio: {dominio}. Funcionalidades: {funcionalidades}. Presupuesto estimado: {presupuesto}. Plazo: {plazo}. Mi nombre es {nombre}, mi WhatsApp es {whatsapp} y mi correo es {correo}. Entiendo que el precio final se cotiza según los detalles."
+                    mensajeWhatsApp: "¡Hola! Me llamo {nombre} y quiero cotizar un sitio web.\n\nTipo de proyecto: {tipoProyecto}\nDirección web: {dominio}\nFuncionalidades: {funcionalidades}\nPresupuesto estimado: {presupuesto}\nPlazo deseado: {plazo}\nCorreo: {correo}\n\n¿Podrían enviarme una cotización según estos detalles?"
                 },
 
                 // ---------- CORREO CORPORATIVO ----------
                 {
                     id: 5,
                     titulo: "Correo Corporativo",
-                    descripcion: "Configuramos correos profesionales con tu dominio para que tu negocio se vea serio.",
+                    descripcion: "Configuramos correos profesionales con tu dominio para que tu negocio se vea formal.",
                     tag: "Complementario",
                     icono: "fa-solid fa-envelope",
                     activo: true,
-                    modo: "solo-info",
+                    modo: "formulario",
                     campos: [
                         {
-                            id: 1, clave: "legal", tipo: "checkbox-legal",
+                            id: 1, clave: "tamanoEmpresa", tipo: "modal-select",
+                            label: "¿Cuál es el tamaño de tu empresa?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Solo yo", descripcion: "Negocio unipersonal sin empleados" },
+                                { id: 2, nombre: "Microempresa", descripcion: "De 2 a 5 personas" },
+                                { id: 3, nombre: "Empresa pequeña", descripcion: "De 6 a 30 personas" },
+                                { id: 4, nombre: "Empresa mediana o grande", descripcion: "Más de 30 personas" }
+                            ]
+                        },
+                        {
+                            id: 2, clave: "cantidadCorreos", tipo: "modal-select",
+                            label: "¿Cuántos correos corporativos necesitas como mínimo?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "1 correo", descripcion: "Solo necesito una cuenta" },
+                                { id: 2, nombre: "2 a 5 correos", descripcion: "Para el negocio y el equipo principal" },
+                                { id: 3, nombre: "6 a 10 correos", descripcion: "Para varios roles o departamentos" },
+                                { id: 4, nombre: "Más de 10 correos", descripcion: "Necesito revisar un volumen mayor" }
+                            ]
+                        },
+                        {
+                            id: 3, clave: "dominioCorreo", tipo: "modal-select",
+                            label: "¿Ya tienes un dominio para tus correos?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Sí, ya tengo dominio", descripcion: "Quiero configurar los correos con mi dominio" },
+                                { id: 2, nombre: "No tengo dominio", descripcion: "Necesito ayuda para registrarlo" },
+                                { id: 3, nombre: "Estoy indeciso", descripcion: "Quiero comparar las opciones disponibles" }
+                            ]
+                        },
+                        {
+                            id: 4, clave: "legal", tipo: "checkbox-legal",
                             label: "Entiendo que InnoCR configura el correo corporativo con el proveedor que yo elija y que el costo del proveedor se paga aparte.",
                             requerido: true
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero correo corporativo para mi negocio. Ya tengo dominio? [Sí / No]. Mi negocio se llama [X] y quiero que me asesoren."
+                    mensajeWhatsApp: "¡Hola! Quiero cotizar el servicio de Correo Corporativo.\n\nTamaño de la empresa: {tamanoEmpresa}\nCorreos corporativos mínimos: {cantidadCorreos}\nSituación del dominio: {dominioCorreo}\n\n¿Me pueden ayudar a elegir el proveedor y el paquete adecuado?"
                 },
 
                 // ---------- ASESORÍA FIRMA DIGITAL ----------
@@ -255,16 +305,12 @@ const CONFIG = {
                             label: "Nombre completo", requerido: true, placeholder: "Tu nombre"
                         },
                         {
-                            id: 4, clave: "whatsapp", tipo: "text",
-                            label: "WhatsApp", requerido: true, placeholder: "Ej: 50688888888"
-                        },
-                        {
-                            id: 5, clave: "legal", tipo: "checkbox-legal",
+                            id: 4, clave: "legal", tipo: "checkbox-legal",
                             label: "Entiendo que InnoCR brinda asesoría independiente y que los costos oficiales de Firma Digital se pagan aparte.",
                             requerido: true
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero asesoría en Firma Digital. ¿Ya tengo firma digital?: {tieneFirma}. Tipo de firma: {tipoFirma}. Mi nombre es {nombre} y mi WhatsApp es {whatsapp}. Quiero que me asesoren."
+                    mensajeWhatsApp: "¡Hola! Me llamo {nombre} y necesito asesoría en Firma Digital.\n\n¿Ya tengo firma digital?: {tieneFirma}\nTipo de firma de interés: {tipoFirma}\n\n¿Me pueden orientar con los requisitos y el proceso?"
                 },
 
                 // ---------- FACTURACIÓN ELECTRÓNICA ----------
@@ -275,15 +321,51 @@ const CONFIG = {
                     tag: "Aliado comercial",
                     icono: "fa-solid fa-file-invoice-dollar",
                     activo: true,
-                    modo: "solo-info", // No tiene formulario, solo info + WhatsApp
+                    modo: "formulario",
                     campos: [
                         {
-                            id: 1, clave: "legal", tipo: "checkbox-legal",
+                            id: 1, clave: "tipoPersona", tipo: "modal-select",
+                            label: "¿Cómo realizás tus operaciones?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Persona física", descripcion: "Trabajo con mi cédula personal" },
+                                { id: 2, nombre: "Persona jurídica", descripcion: "Opero por medio de una sociedad o empresa" },
+                                { id: 3, nombre: "Aún no estoy registrado", descripcion: "Todavía no tengo un RUC o registro activo" }
+                            ]
+                        },
+                        {
+                            id: 2, clave: "registroHacienda", tipo: "modal-select",
+                            label: "¿Cuál es tu estado en Hacienda?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Sí, estoy registrado", descripcion: "Tengo RUC activo y acceso a ATV" },
+                                { id: 2, nombre: "No estoy registrado", descripcion: "Necesito orientación para registrarme" },
+                                { id: 3, nombre: "No estoy seguro", descripcion: "No sé si mi RUC está activo o cómo comprobarlo" }
+                            ]
+                        },
+                        {
+                            id: 3, clave: "firmaDigital", tipo: "modal-select",
+                            label: "¿Tenés firma digital vigente?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Sí, tengo firma vigente", descripcion: "Ya puedo utilizarla" },
+                                { id: 2, nombre: "No tengo firma digital", descripcion: "Necesito tramitarla" },
+                                { id: 3, nombre: "No sé si está vigente", descripcion: "Necesito verificar su estado" }
+                            ]
+                        },
+                        {
+                            id: 4, clave: "tipoFacturacion", tipo: "modal-select",
+                            label: "¿Qué necesitás?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Quiero empezar desde cero", descripcion: "Necesito orientación en registro, firma y proveedor" },
+                                { id: 2, nombre: "Ya tengo sistema", descripcion: "Necesito asesoría para configurar o migrar" },
+                                { id: 3, nombre: "Solo quiero cotizar el servicio", descripcion: "Busco conocer opciones y costos" }
+                            ]
+                        },
+                        {
+                            id: 5, clave: "legal", tipo: "checkbox-legal",
                             label: "Entiendo que InnoCR es un asesor independiente y que la facturación electrónica la provee un aliado comercial autorizado. No somos Hacienda ni una institución pública.",
                             requerido: true
                         }
                     ],
-                    mensajeWhatsApp: "Hola, me interesa la facturación electrónica con su aliado. ¿Ya estoy registrado en Hacienda? [Sí / No / No sé]. Quiero que me guíen en el proceso."
+                    mensajeWhatsApp: "¡Hola! Quiero recibir asesoría sobre Facturación Electrónica.\n\nTipo de operación: {tipoPersona}\nEstado en Hacienda: {registroHacienda}\nFirma digital: {firmaDigital}\nNecesidad principal: {tipoFacturacion}\n\n¿Me pueden indicar cómo empezar o qué debo completar antes?"
                 },
 
                 // ---------- SICOP ----------
@@ -294,15 +376,60 @@ const CONFIG = {
                     tag: "Asesoría",
                     icono: "fa-solid fa-gavel",
                     activo: true,
-                    modo: "solo-info",
+                    modo: "formulario",
                     campos: [
                         {
-                            id: 1, clave: "legal", tipo: "checkbox-legal",
+                            id: 1, clave: "tipoPersonaSicop", tipo: "modal-select",
+                            label: "¿Cómo participará tu empresa en SICOP?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Persona física", descripcion: "Participaré con mi cédula personal" },
+                                { id: 2, nombre: "Persona jurídica", descripcion: "Representaré a una sociedad o empresa" },
+                                { id: 3, nombre: "Aún no estoy seguro", descripcion: "Necesito orientación sobre la estructura adecuada" }
+                            ]
+                        },
+                        {
+                            id: 2, clave: "registroSicop", tipo: "modal-select",
+                            label: "¿Ya estás registrado como proveedor en SICOP?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Sí, estoy registrado", descripcion: "Ya tengo acceso como proveedor" },
+                                { id: 2, nombre: "No estoy registrado", descripcion: "Necesito orientación para el registro" },
+                                { id: 3, nombre: "No sé si estoy registrado", descripcion: "Necesito verificar mi estado" }
+                            ]
+                        },
+                        {
+                            id: 3, clave: "firmaSicop", tipo: "modal-select",
+                            label: "¿Tenés firma digital vigente?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Sí, tengo firma vigente", descripcion: "Puedo utilizarla en SICOP" },
+                                { id: 2, nombre: "No tengo firma digital", descripcion: "Necesito tramitarla" },
+                                { id: 3, nombre: "No sé si está vigente", descripcion: "Necesito verificar su estado" }
+                            ]
+                        },
+                        {
+                            id: 4, clave: "estadoHaciendaCcss", tipo: "modal-select",
+                            label: "¿Estás al día con Hacienda y la CCSS?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Sí, estoy al día", descripcion: "Tengo mis obligaciones principales actualizadas" },
+                                { id: 2, nombre: "No estoy al día", descripcion: "Necesito regularizar obligaciones" },
+                                { id: 3, nombre: "No estoy seguro", descripcion: "Necesito verificar mi estado" }
+                            ]
+                        },
+                        {
+                            id: 5, clave: "objetivoSicop", tipo: "modal-select",
+                            label: "¿Qué necesitas respecto a SICOP?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Aprender a participar", descripcion: "Quiero comprender licitaciones y procesos" },
+                                { id: 2, nombre: "Completar el registro", descripcion: "Necesito apoyo con requisitos y proveedores" },
+                                { id: 3, nombre: "Prepararme para licitar", descripcion: "Ya puedo participar y quiero asesoría práctica" }
+                            ]
+                        },
+                        {
+                            id: 6, clave: "legal", tipo: "checkbox-legal",
                             label: "Entiendo que InnoCR es un asesor independiente. No gestionamos el registro en SICOP por vos ni garantizamos adjudicaciones; te damos el conocimiento y la guía para que lo hagas con confianza.",
                             requerido: true
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero asesoría para licitaciones SICOP. ¿Tengo firma digital? [Sí / No]. Mi negocio se dedica a [X] y quiero entender cómo empezar."
+                    mensajeWhatsApp: "¡Hola! Quiero asesoría para participar en SICOP.\n\nTipo de persona: {tipoPersonaSicop}\nEstado del registro en SICOP: {registroSicop}\nFirma digital: {firmaSicop}\nEstado con Hacienda y CCSS: {estadoHaciendaCcss}\nObjetivo: {objetivoSicop}\n\n¿Me pueden orientar sobre los requisitos que me faltan?"
                 },
 
                 // ---------- PUBLICIDAD EN REDES SOCIALES ----------
@@ -341,16 +468,12 @@ const CONFIG = {
                             label: "Nombre completo", requerido: true, placeholder: "Tu nombre"
                         },
                         {
-                            id: 5, clave: "whatsapp", tipo: "text",
-                            label: "WhatsApp", requerido: true, placeholder: "Ej: 50688888888"
-                        },
-                        {
-                            id: 6, clave: "legal", tipo: "checkbox-legal",
+                            id: 5, clave: "legal", tipo: "checkbox-legal",
                             label: "Entiendo que el costo mensual base y los costos adicionales se confirman por WhatsApp según el alcance del servicio.",
                             requerido: true
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero cotizar Publicidad en Redes Sociales. Tipo de publicidad: {tipoPublicidad}. Objetivo: {objetivo}. Redes: {redes}. Mi nombre es {nombre} y mi WhatsApp es {whatsapp}. Entiendo que el costo mensual base y los costos adicionales se confirman por WhatsApp."
+                    mensajeWhatsApp: "¡Hola! Me llamo {nombre} y quiero cotizar Publicidad en Redes Sociales.\n\nServicios de interés: {tipoPublicidad}\nObjetivo: {objetivo}\nRedes: {redes}\n\n¿Podrían indicarme el costo mensual base y los costos adicionales correspondientes?"
                 },
 
                 // ---------- SOFTWARE A MEDIDA ----------
@@ -361,15 +484,60 @@ const CONFIG = {
                     tag: "Complementario",
                     icono: "fa-solid fa-code",
                     activo: true,
-                    modo: "solo-info",
+                    modo: "formulario",
                     campos: [
                         {
-                            id: 1, clave: "legal", tipo: "checkbox-legal",
+                            id: 1, clave: "tipoSoftware", tipo: "modal-select",
+                            label: "¿Qué tipo de solución necesitás?", requerido: true, multiple: false,
+                            opciones: [
+                                { id: 1, nombre: "Sitio web o sistema web", descripcion: "Landing, portal, plataforma o sistema accesible desde navegador" },
+                                { id: 2, nombre: "Programa de computadora", descripcion: "Aplicación para Windows, macOS o equipo de escritorio" },
+                                { id: 3, nombre: "Aplicación móvil", descripcion: "Aplicación para Android e iOS" },
+                                { id: 4, nombre: "Necesito orientación", descripcion: "Aún no sé qué tipo de solución se adapta mejor" }
+                            ]
+                        },
+                        {
+                            id: 2, clave: "plataformasMoviles", tipo: "checkbox-group",
+                            label: "¿En qué plataformas debe funcionar?", requerido: false,
+                            opciones: [
+                                { id: 1, nombre: "Android" },
+                                { id: 2, nombre: "iOS" },
+                                { id: 3, nombre: "Windows" },
+                                { id: 4, nombre: "macOS" },
+                                { id: 5, nombre: "Navegador web" }
+                            ]
+                        },
+                        {
+                            id: 3, clave: "usuariosSoftware", tipo: "text",
+                            label: "¿Quiénes utilizarán el programa?",
+                            requerido: true,
+                            placeholder: "Ej: empleados, clientes, vendedores, administradores..."
+                        },
+                        {
+                            id: 4, clave: "funcionalidadesSoftware", tipo: "text",
+                            label: "¿Qué debe permitir hacer el programa?",
+                            requerido: true,
+                            placeholder: "Ej: registrar ventas, controlar inventario, generar reportes..."
+                        },
+                        {
+                            id: 5, clave: "integracionesSoftware", tipo: "text",
+                            label: "¿Debe conectarse con algún sistema? (opcional)",
+                            requerido: false,
+                            placeholder: "Ej: facturación electrónica, WhatsApp, correo, Google Sheets..."
+                        },
+                        {
+                            id: 6, clave: "plazoSoftware", tipo: "text",
+                            label: "Plazo deseado (opcional)",
+                            requerido: false,
+                            placeholder: "Ej: 1 mes, 3 meses..."
+                        },
+                        {
+                            id: 7, clave: "legal", tipo: "checkbox-legal",
                             label: "Entiendo que InnoCR es un equipo de ingenieros en TI y que el software a medida se cotiza según los requerimientos de mi negocio.",
                             requerido: true
                         }
                     ],
-                    mensajeWhatsApp: "Hola, quiero cotizar software a medida para mi negocio. Mi negocio se llama [X] y necesito [Y]. Quiero que me asesoren."
+                    mensajeWhatsApp: "¡Hola! Tengo un proyecto de software a medida y quiero solicitar una cotización.\n\nTipo de solución: {tipoSoftware}\nPlataformas: {plataformasMoviles}\nUsuarios: {usuariosSoftware}\nFunciones que necesita: {funcionalidadesSoftware}\nIntegraciones: {integracionesSoftware}\nPlazo deseado: {plazoSoftware}\n\n¿Me pueden orientarme sobre el alcance y el costo del proyecto?"
                 }
 
             ]
