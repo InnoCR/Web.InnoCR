@@ -442,7 +442,7 @@ const CONFIG = {
                     activo: true,
                     modo: "formulario",
                     precio: { oficial: null, gestion: 0, feeUnico: true },
-                    notaPrecio: "La gestión mensual base se cotiza según alcance y cantidad de redes. Los costos adicionales son: publicación promocional ₡15.000; campaña pagada ₡25.000; gestión de contenido ₡35.000.",
+                    notaPrecio: "La gestión mensual base se cotiza según alcance y cantidad de redes. Los costos adicionales mostrados son referenciales y se confirman por WhatsApp según el alcance del servicio.",
                     campos: [
                         {
                             id: 1, clave: "tipoPublicidad", tipo: "checkbox-group",
