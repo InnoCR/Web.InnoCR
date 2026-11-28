@@ -1,5 +1,5 @@
 /* ============================================
-   Emprendedor InnoCR — data.js
+   InnoCR — data.js
    Datos variables del sitio. Editar aquí sin tocar código.
    ============================================ */
 
@@ -16,7 +16,7 @@ const CONFIG = {
         locale: "es-CR"
     },
 
-    avisoLegalFooter: "Emprendedor InnoCR es un servicio independiente de asesoría y acompañamiento para emprendedores. No somos una institución pública, no representamos a Hacienda, SICOP ni a ninguna entidad del Estado. Los costos oficiales de cada trámite se pagan aparte.",
+    avisoLegalFooter: "InnoCR es un servicio independiente de asesoría y acompañamiento para emprendedores. No somos una institución pública, no representamos a Hacienda, SICOP ni a ninguna entidad del Estado. Los costos oficiales de cada trámite se pagan aparte.",
 
     analytics: {
         gtm_id: "GTM-PHGKWSVQ",
@@ -50,7 +50,7 @@ const CONFIG = {
                     campos: [
                         {
                             id: 1, clave: "legal", tipo: "checkbox-legal",
-                            label: "Entiendo que Emprendedor InnoCR es un asesor independiente y que la facturación electrónica la provee un aliado comercial autorizado. No somos Hacienda ni una institución pública.",
+                            label: "Entiendo que InnoCR es un asesor independiente y que la facturación electrónica la provee un aliado comercial autorizado. No somos Hacienda ni una institución pública.",
                             requerido: true
                         }
                     ],
@@ -93,7 +93,7 @@ const CONFIG = {
                             campos: [
                                 {
                                     id: 9, clave: "legal", tipo: "checkbox-legal",
-                                    label: "Autorizo a Emprendedor InnoCR a usar estos datos para crear mi tarjeta de presentación web y contactarme por WhatsApp. Entiendo que mis datos se guardan en Google Sheets y que el enlace se activa una vez confirmado el pago de ₡5.000.",
+                                    label: "Autorizo a InnoCR a usar estos datos para crear mi tarjeta de presentación web y contactarme por WhatsApp. Entiendo que mis datos se guardan en Google Sheets y que el enlace se activa una vez confirmado el pago de ₡5.000.",
                                     requerido: true
                                 }
                             ]
@@ -154,7 +154,7 @@ const CONFIG = {
                                 { id: 8, clave: "correo", tipo: "text", label: "Correo electrónico", requerido: true, placeholder: "Ej: tu@correo.com" },
                                 {
                                     id: 9, clave: "legal", tipo: "checkbox-legal",
-                                    label: "Entiendo que Emprendedor InnoCR es un equipo de ingenieros en TI y que el precio final se cotiza según los detalles de mi proyecto.",
+                                    label: "Entiendo que InnoCR es un equipo de ingenieros en TI y que el precio final se cotiza según los detalles de mi proyecto.",
                                     requerido: true
                                 }
                             ]
@@ -175,7 +175,7 @@ const CONFIG = {
                     campos: [
                         {
                             id: 1, clave: "legal", tipo: "checkbox-legal",
-                            label: "Entiendo que Emprendedor InnoCR es un asesor independiente. No gestionamos el registro en SICOP por vos ni garantizamos adjudicaciones; te damos el conocimiento y la guía para que lo hagas con confianza.",
+                            label: "Entiendo que InnoCR es un asesor independiente. No gestionamos el registro en SICOP por vos ni garantizamos adjudicaciones; te damos el conocimiento y la guía para que lo hagas con confianza.",
                             requerido: true
                         }
                     ],
@@ -194,7 +194,7 @@ const CONFIG = {
                     campos: [
                         {
                             id: 1, clave: "legal", tipo: "checkbox-legal",
-                            label: "Entiendo que Emprendedor InnoCR configura el correo corporativo con el proveedor que yo elija y que el costo del proveedor se paga aparte.",
+                            label: "Entiendo que InnoCR configura el correo corporativo con el proveedor que yo elija y que el costo del proveedor se paga aparte.",
                             requerido: true
                         }
                     ],
@@ -213,7 +213,7 @@ const CONFIG = {
                     campos: [
                         {
                             id: 1, clave: "legal", tipo: "checkbox-legal",
-                            label: "Entiendo que Emprendedor InnoCR cotiza el diseño de logo según la complejidad de la marca y que el precio final se confirma por WhatsApp.",
+                            label: "Entiendo que InnoCR cotiza el diseño de logo según la complejidad de la marca y que el precio final se confirma por WhatsApp.",
                             requerido: true
                         }
                     ],
@@ -232,7 +232,7 @@ const CONFIG = {
                     campos: [
                         {
                             id: 1, clave: "legal", tipo: "checkbox-legal",
-                            label: "Entiendo que Emprendedor InnoCR es un equipo de ingenieros en TI y que el software a medida se cotiza según los requerimientos de mi negocio.",
+                            label: "Entiendo que InnoCR es un equipo de ingenieros en TI y que el software a medida se cotiza según los requerimientos de mi negocio.",
                             requerido: true
                         }
                     ],
@@ -307,10 +307,10 @@ const CONFIG = {
        TEXTOS LEGALES
        -------------------------------------------- */
     textosLegales: {
-        privacidad: "Emprendedor InnoCR es un servicio independiente de asesoría y acompañamiento para emprendedores. No somos una institución pública ni representamos a Hacienda, SICOP, MOPT ni a ninguna entidad del Estado.\n\nLos datos que ingresás en los formularios (nombre, cédula, contacto, datos del negocio) se envían por WhatsApp al número de contacto de Emprendedor InnoCR para coordinar el servicio que solicitás. En el caso de la Tarjeta de Presentación Web, los datos se guardan en un Google Sheet privado para gestionar el registro y la renovación. No almacenamos tus datos en servidores propios.\n\nLos costos oficiales de cada trámite se pagan aparte y se te informan antes de cualquier pago. Emprendedor InnoCR cobra únicamente un costo de gestión o asesoría por el acompañamiento.\n\nPara consultas sobre tus datos, escribinos al WhatsApp 50670373820.",
+        privacidad: "InnoCR es un servicio independiente de asesoría y acompañamiento para emprendedores. No somos una institución pública ni representamos a Hacienda, SICOP, MOPT ni a ninguna entidad del Estado.\n\nLos datos que ingresás en los formularios (nombre, cédula, contacto, datos del negocio) se envían por WhatsApp al número de contacto de InnoCR para coordinar el servicio que solicitás. En el caso de la Tarjeta de Presentación Web, los datos se guardan en un Google Sheet privado para gestionar el registro y la renovación. No almacenamos tus datos en servidores propios.\n\nLos costos oficiales de cada trámite se pagan aparte y se te informan antes de cualquier pago. InnoCR cobra únicamente un costo de gestión o asesoría por el acompañamiento.\n\nPara consultas sobre tus datos, escribinos al WhatsApp 50670373820.",
         cookies: "En InnoCR utilizamos cookies y tecnologías similares para analizar cómo navegas en nuestro sitio y mejorar tu experiencia.\n\n1. ¿Qué son las cookies? Son pequeños archivos que se almacenan en tu dispositivo cuando visitas un sitio web. Nos permiten recordar tus preferencias y entender cómo usas el sitio.\n\n2. Tipos de cookies que usamos:\n   • Cookies técnicas necesarias: permiten el funcionamiento básico del sitio y recordar tu decisión sobre este aviso. No requieren consentimiento.\n   • Cookies analíticas: usamos Google Analytics (a través de Google Tag Manager) para medir de forma anónima cuántas personas visitan el sitio, qué páginas ven y cómo navegan. Esta información nos ayuda a mejorar el contenido y la experiencia.\n\n3. Base legal: Tratamos cookies analíticas únicamente con tu consentimiento, conforme a la Ley N.° 8968 de Costa Rica.\n\n4. Control: Puedes aceptar o rechazar las cookies analíticas desde el aviso que aparece al entrar al sitio. Si las rechazas, no cargaremos Google Analytics y no se enviará información a Google. También puedes borrar las cookies desde la configuración de tu navegador en cualquier momento.\n\n5. Cambios: Si actualizamos esta política, lo indicaremos en este mismo sitio.\n\nSi tienes dudas, escríbenos a info@innocr.com.",
-        guiaFacturacion: "Para empezar a facturar electrónicamente en Costa Rica necesitás:\n\n1. Estar inscrito en Hacienda (RUC activo).\n2. Contar con firma digital o un proveedor autorizado de facturación electrónica.\n3. Elegir un sistema de facturación (te guiamos con nuestro aliado comercial).\n4. Configurar tus datos y certificados.\n5. Empezar a emitir facturas.\n\nEn Emprendedor InnoCR te acompañamos en todo el proceso. Escribinos por WhatsApp y te guiamos paso a paso.",
-        guiaSicop: "El SICOP (Sistema de Compras Públicas) es la plataforma del Estado costarricense para licitaciones públicas.\n\nPara participar necesitás:\n\n1. Estar inscrito como proveedor en SICOP.\n2. Contar con firma digital vigente.\n3. Estar al día con la CCSS y Hacienda.\n4. Conocer los tipos de licitación (bienes, servicios, obras).\n\nEn Emprendedor InnoCR te asesoramos para que tu empresa participe con confianza. No gestionamos el registro por vos ni garantizamos adjudicaciones. Escribinos por WhatsApp y te orientamos."
+        guiaFacturacion: "Para empezar a facturar electrónicamente en Costa Rica necesitás:\n\n1. Estar inscrito en Hacienda (RUC activo).\n2. Contar con firma digital o un proveedor autorizado de facturación electrónica.\n3. Elegir un sistema de facturación (te guiamos con nuestro aliado comercial).\n4. Configurar tus datos y certificados.\n5. Empezar a emitir facturas.\n\nEn InnoCR te acompañamos en todo el proceso. Escribinos por WhatsApp y te guiamos paso a paso.",
+        guiaSicop: "El SICOP (Sistema de Compras Públicas) es la plataforma del Estado costarricense para licitaciones públicas.\n\nPara participar necesitás:\n\n1. Estar inscrito como proveedor en SICOP.\n2. Contar con firma digital vigente.\n3. Estar al día con la CCSS y Hacienda.\n4. Conocer los tipos de licitación (bienes, servicios, obras).\n\nEn InnoCR te asesoramos para que tu empresa participe con confianza. No gestionamos el registro por vos ni garantizamos adjudicaciones. Escribinos por WhatsApp y te orientamos."
     },
 
     /* --------------------------------------------
@@ -319,11 +319,11 @@ const CONFIG = {
     modalesInfo: {
         guiaFacturacion: {
             titulo: "¿Cómo empezar a facturar?",
-            texto: "Para empezar a facturar electrónicamente en Costa Rica necesitás:\n\n1. Estar inscrito en Hacienda (RUC activo).\n2. Contar con firma digital o un proveedor autorizado de facturación electrónica.\n3. Elegir un sistema de facturación (te guiamos con nuestro aliado comercial).\n4. Configurar tus datos y certificados.\n5. Empezar a emitir facturas.\n\nEn Emprendedor InnoCR te acompañamos en todo el proceso. Escribinos por WhatsApp y te guiamos paso a paso."
+            texto: "Para empezar a facturar electrónicamente en Costa Rica necesitás:\n\n1. Estar inscrito en Hacienda (RUC activo).\n2. Contar con firma digital o un proveedor autorizado de facturación electrónica.\n3. Elegir un sistema de facturación (te guiamos con nuestro aliado comercial).\n4. Configurar tus datos y certificados.\n5. Empezar a emitir facturas.\n\nEn InnoCR te acompañamos en todo el proceso. Escribinos por WhatsApp y te guiamos paso a paso."
         },
         guiaSicop: {
             titulo: "¿Qué es el SICOP?",
-            texto: "El SICOP (Sistema de Compras Públicas) es la plataforma del Estado costarricense para licitaciones públicas.\n\nPara participar necesitás:\n\n1. Estar inscrito como proveedor en SICOP.\n2. Contar con firma digital vigente.\n3. Estar al día con la CCSS y Hacienda.\n4. Conocer los tipos de licitación (bienes, servicios, obras).\n\nEn Emprendedor InnoCR te asesoramos para que tu empresa participe con confianza. No gestionamos el registro por vos ni garantizamos adjudicaciones. Escribinos por WhatsApp y te orientamos."
+            texto: "El SICOP (Sistema de Compras Públicas) es la plataforma del Estado costarricense para licitaciones públicas.\n\nPara participar necesitás:\n\n1. Estar inscrito como proveedor en SICOP.\n2. Contar con firma digital vigente.\n3. Estar al día con la CCSS y Hacienda.\n4. Conocer los tipos de licitación (bienes, servicios, obras).\n\nEn InnoCR te asesoramos para que tu empresa participe con confianza. No gestionamos el registro por vos ni garantizamos adjudicaciones. Escribinos por WhatsApp y te orientamos."
         }
     }
 
